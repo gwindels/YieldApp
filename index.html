@@ -15,6 +15,7 @@
       --bg: #131310;
       --surface: #161410;
       --surface-raised: #1c1a16;
+      --shaded: rgba(0,0,0,0.5);
       --border: rgba(255,255,255,0.07);
       --border-accent: rgba(212,172,100,0.3);
       --text: #e8e2d6;
@@ -34,7 +35,7 @@
       --amber: #d4ac64;
       --amber-dark: #916c20;
       --amber-dim: rgba(212,172,100,0.15);
-      --amber-subtle: rgba(212,172,100,0.07);
+      --amber-subtle: rgb(33,30,23);
       --nav-bg-scrolled: rgba(14,13,11,0.92);
       --nav-bg-top: rgba(14,13,11,0.95);
       --serif: 'Instrument Serif', Georgia, serif;
@@ -46,10 +47,11 @@
       --bg: #F4F1EA;
       --surface: #ede9e0;
       --surface-raised: #e4dfd3;
+      --shaded: rgba(0,0,0,0.1);
       --border: rgba(0,0,0,0.09);
       --border-accent: rgba(160,110,30,0.28);
       --text: #1a1810;
-      --text-dim: #49453b;
+      --text-dim: #36332b;
       --text-muted: rgba(26,24,16,0.5);
       --btn-primary-label: #e8e2d6;
       --btn-primary-label-hover: #e8e2d6;
@@ -65,7 +67,7 @@
       --amber: #a06e1e;
       --amber-dark: #7a5214;
       --amber-dim: rgba(160,110,30,0.12);
-      --amber-subtle: rgba(160,110,30,0.06);
+      --amber-subtle: rgb(227, 220, 207);
       --nav-bg-scrolled: rgba(245,242,236,0.92);
       --nav-bg-top: rgba(245,242,236,0.95);
     }
@@ -869,46 +871,54 @@
       gap: 0;
       border: 1px solid var(--border);
     }
-    .rpe-row {
+    .rpe-grid {
+      display: grid;
+      grid-template-columns: 0.5fr 2fr repeat(2, 1fr);
+      grid-template-rows: repeat(6, 1fr);
+      grid-column-gap: 0px;
+      grid-row-gap: 1px;
+      align-items: stretch;
+      border: 0.5px solid var(--border);
+      background-color: var(--border);
+    }
+    .rpe-grid > * {
+      background-color: var(--surface);
       display: flex;
       align-items: center;
-      gap: 20px;
-      padding: 14px 24px;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.2s;
+      justify-content: stretch;
+      padding: 0.7rem 0.6rem 0.7rem 0.2rem;
     }
-    .rpe-row:last-child { border-bottom: none; }
-    .rpe-row:hover { background: var(--surface-raised); }
-    .rpe-bar-wrap {
-      flex: 1;
-      height: 4px;
-      background: var(--surface-raised);
+    .rpe-grid > *:nth-child(n+9):nth-child(-n+20) {
+      background-color: var(--amber-subtle);
+    }
+    .rpe-grid .rpe-bar {
+      min-height: 4px;
+      min-width: 100%;
+      background: var(--shaded);
       border-radius: 2px;
       overflow: hidden;
     }
-    .rpe-bar-fill {
-      height: 100%;
+    .rpe-bar .rpe-bar-fill {
+      min-height: 4px;
       border-radius: 2px;
       background: var(--amber);
       transition: width 0.6s ease;
     }
-    .rpe-num {
+    .rpe-grid .rpe-num {
       font-family: var(--mono);
-      font-size: 15px;
+      font-size: 13px;
       font-weight: 400;
       color: var(--text);
-      width: 20px;
-      text-align: right;
+      justify-content: flex-end;
     }
-    .rpe-desc {
+    .rpe-grid .rpe-desc {
       font-family: var(--mono);
       font-size: 10px;
       font-weight: 400;
       color: var(--text-dim);
       letter-spacing: 0.06em;
-      width: 160px;
     }
-    .rpe-adjust {
+    .rpe-grid .rpe-adjust {
       font-family: var(--mono);
       font-size: 10px;
       font-weight: 400;
@@ -916,11 +926,11 @@
       letter-spacing: 0.06em;
       white-space: nowrap;
     }
-    .rpe-row.active-rpe {
+    .rpe-grid .rpe-row.active-rpe {
       background: var(--amber-subtle);
       border-color: transparent;
     }
-    .rpe-row.active-rpe .rpe-num { color: var(--amber); }
+    .rpe-grid .rpe-row.active-rpe .rpe-num { color: var(--amber); }
 
     /* ── PRIVATE DATA SECTION ────────────────────────────── */
     .private-section {
@@ -1395,51 +1405,39 @@
         Yield uses those ratings to adjust the weights in upcoming sessions. Had a hard week? The next one will be a little lighter. Had an easy one? You're ready for more. 
       </p>
     </div>
-    <div class="rpe-scale reveal">
-      <div class="rpe-row">
+    <div class="rpe-grid reveal">
         <div class="rpe-num">10</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:100%"></div></div>
-        <div class="rpe-desc">Absolute maximum</div>
-        <div class="rpe-adjust">↓ significant deload</div>
-      </div>
-      <div class="rpe-row">
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:100%"></div></div></div>
+        <div class="rpe-desc">Hit maximum</div>
+        <div class="rpe-adjust">↓ deload</div>
         <div class="rpe-num">9</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:88%"></div></div>
-        <div class="rpe-desc">One rep left</div>
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:88%"></div></div></div>
+        <div class="rpe-desc">1 rep left</div>
         <div class="rpe-adjust">↓ lighten load</div>
-      </div>
-      <div class="rpe-row active-rpe">
         <div class="rpe-num">8</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:74%"></div></div>
-        <div class="rpe-desc">Two reps left</div>
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:74%"></div></div></div>
+        <div class="rpe-desc">2 reps left</div>
         <div class="rpe-adjust">→ hold weight</div>
-      </div>
-      <div class="rpe-row active-rpe">
         <div class="rpe-num">7</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:60%"></div></div>
-        <div class="rpe-desc">Three reps left</div>
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:60%"></div></div></div>
+        <div class="rpe-desc">3 reps left</div>
         <div class="rpe-adjust">→ hold weight</div>
-      </div>
-      <div class="rpe-row active-rpe">
         <div class="rpe-num">6</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:46%"></div></div>
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:46%"></div></div></div>
         <div class="rpe-desc">Comfortable</div>
         <div class="rpe-adjust">→ hold weight</div>
-      </div>
-      <div class="rpe-row">
         <div class="rpe-num">5</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:34%"></div></div>
-        <div class="rpe-desc">Very comfortable</div>
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:34%"></div></div></div>
+        <div class="rpe-desc">Very easy</div>
         <div class="rpe-adjust">↑↑ increase load</div>
-      </div>
-      <div class="rpe-row">
         <div class="rpe-num">4</div>
-        <div class="rpe-bar-wrap"><div class="rpe-bar-fill" style="width:22%"></div></div>
-        <div class="rpe-desc">Minimal effort</div>
+        <div class="rpe-bar-wrap"><div class="rpe-bar"><div class="rpe-bar-fill" style="width:22%"></div></div></div>
+        <div class="rpe-desc">Minimal</div>
         <div class="rpe-adjust">↑↑ increase load</div>
       </div>
     </div>
   </div>
+  
 </section>
 
 <!-- CHAT -->
