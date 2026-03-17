@@ -18,10 +18,21 @@
       --border: rgba(255,255,255,0.07);
       --border-accent: rgba(212,172,100,0.3);
       --text: #e8e2d6;
-      --text-dim: #e8e2d6;
-      --text-muted: rgba(232,226,214,0.25);
+      --text-dim: #b9b4aa;
+      --text-muted: rgba(232,226,214,0.5);
+      --btn-primary-label: #0e0d0b;
+      --btn-primary-label-hover: #0e0d0b;
+      --btn-primary-background: #d4a958;
+      --btn-primary-background-hover: #fccf7a;
+      --btn-secondary-label: #e8e2d6;
+      --btn-secondary-label-hover: #fff;
+      --btn-secondary-background: #362711;
+      --btn-secondary-background-hover: rgb(95, 67, 24);
+      --btn-secondary-border: #60451a;
+      --btn-secondary-border-hover: rgb(154, 115, 36);
+      --amber-light: #b68e44;
       --amber: #d4ac64;
-      --amber-dark: #b8892e;
+      --amber-dark: #916c20;
       --amber-dim: rgba(212,172,100,0.15);
       --amber-subtle: rgba(212,172,100,0.07);
       --nav-bg-scrolled: rgba(14,13,11,0.92);
@@ -38,8 +49,19 @@
       --border: rgba(0,0,0,0.09);
       --border-accent: rgba(160,110,30,0.28);
       --text: #1a1810;
-      --text-dim: #665F51;
-      --text-muted: rgba(26,24,16,0.3);
+      --text-dim: #49453b;
+      --text-muted: rgba(26,24,16,0.5);
+      --btn-primary-label: #e8e2d6;
+      --btn-primary-label-hover: #e8e2d6;
+      --btn-primary-background: #a06e1e;
+      --btn-primary-background-hover: #8b5c12;
+      --btn-secondary-label: #1a1810;
+      --btn-secondary-label-hover: #111;
+      --btn-secondary-background: #f5e4ca;
+      --btn-secondary-background-hover: rgb(237, 213, 177);
+      --btn-secondary-border: rgb(203, 178, 129);
+      --btn-secondary-border-hover: rgb(206, 160, 68);
+      --amber-light: #eac994;
       --amber: #a06e1e;
       --amber-dark: #7a5214;
       --amber-dim: rgba(160,110,30,0.12);
@@ -84,7 +106,7 @@
       cursor: pointer;
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -108,7 +130,7 @@
     .nav-links a {
       font-family: var(--mono);
       font-size: 12px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       text-decoration: none;
       letter-spacing: 0.08em;
@@ -116,24 +138,26 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--amber); }
+    
     .nav-cta {
       font-family: var(--mono);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 400;
-      color: var(--amber);
       text-decoration: none;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      border: 1px solid var(--border-accent);
+      border: 1px solid var(--amber);
       padding: 8px 20px;
       border-radius: 2px;
       transition: background 0.2s, color 0.2s;
+      color: var(--btn-primary-label);
     }
     .nav-cta:hover {
-      background: var(--amber-dim);
+      background: var(--btn-primary-background-hover);
+      border: 1px solid var(--btn-primary-background-hover);
     }
     button.nav-cta {
-      background: none;
+      background: var(--btn-primary-background);
       cursor: pointer;
       font-family: var(--mono);
     }
@@ -169,7 +193,7 @@
     .hero-label {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--amber);
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -183,7 +207,7 @@
     }
     .hero-headline {
       font-family: var(--serif);
-      font-size: clamp(52px, 6vw, 76px);
+      font-size: clamp(42px, 6vw, 76px);
       line-height: 1.2;
       letter-spacing: -0.01em;
       max-width: 900px;
@@ -196,8 +220,8 @@
     }
     .hero-sub {
       margin-top: 32px;
-      font-size: 17px;
-      font-weight: 300;
+      font-size: 18px;
+      font-weight: 400;
       color: var(--text-dim);
       max-width: 520px;
       line-height: 1.7;
@@ -206,14 +230,15 @@
       text-wrap: pretty;
     }
     .hero-actions {
-      margin-top: 48px;
+      margin-top: 28px;
+      margin-bottom: 24px;
       display: flex;
       align-items: center;
-      gap: 28px;
+      gap: 12px;
       opacity: 0;
       animation: fadeUp 0.9s 0.65s ease forwards;
     }
-    .btn-primary {
+    .btn-label {
       display: inline-block;
       background: var(--amber);
       color: #0e0d0b;
@@ -227,14 +252,31 @@
       border-radius: 2px;
       transition: opacity 0.2s;
     }
-    .btn-primary:hover { opacity: 0.85; }
+    .btn-label:hover { opacity: 0.85; }
     .hero-scroll-hint {
       font-family: var(--mono);
-      font-size: 11px;
-      font-weight: 300;
-      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-dim);
       letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 32px;
+      background-image: linear-gradient(to top, var(--amber), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { 
+        opacity: 0.3;
+      }
+      50% { 
+        opacity: 1; 
+      }
     }
 
     /* ── STATS BAR ───────────────────────────────────────── */
@@ -254,7 +296,7 @@
     .stat-value {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--amber);
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -262,7 +304,7 @@
     }
     .stat-label {
       font-size: 14px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       line-height: 1.4;
     }
@@ -274,8 +316,8 @@
     }
     .section-tag {
       font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.14em;
       text-transform: uppercase;
@@ -284,9 +326,10 @@
     .section-header {
       font-family: var(--serif);
       font-size: clamp(36px, 4vw, 56px);
+      font-weight: bold;
       line-height: 1.1;
       max-width: 640px;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
     .section-header em {
       font-style: italic;
@@ -294,11 +337,11 @@
     }
     .section-intro {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       max-width: 520px;
       line-height: 1.75;
-      margin-bottom: 72px;
+      margin-bottom: 24px;
       text-wrap: pretty;
     }
 
@@ -328,20 +371,20 @@
     .feature-num {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.12em;
       margin-bottom: 28px;
     }
     .feature-title {
       font-family: var(--serif);
-      font-size: 26px;
+      font-size: 28px;
       margin-bottom: 16px;
       line-height: 1.2;
     }
     .feature-body {
-      font-size: 14px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       color: var(--text-dim);
       line-height: 1.75;
     }
@@ -387,7 +430,7 @@
     .chat-section {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      gap: 60px;
       align-items: center;
     }
     .phone-wrap {
@@ -405,7 +448,7 @@
       flex-shrink: 0;
       overflow: hidden;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
       flex-direction: column;
     }
     
@@ -423,8 +466,15 @@
       height: 9px;
       background: rgba(0,0,0,0.15);
       border-radius: 6px;
-      margin: 0 auto 20px;
+      margin: 0 auto;
       flex-grow: 0;
+    }
+    .phone-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      margin: 20px auto;
     }
     .phone-content {
       flex-grow: 1;
@@ -540,14 +590,15 @@
     }
 
     /* ── ADJUSTMENT CHAT MOCKUP ──────────────────────────── */
-    .pch-nav {
+    .ph-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 0 16px;
       margin-bottom: 20px;
+      transform: translateY(-24px);
     }
-    .pch-back {
+    .ph-back {
       width: 32px;
       height: 32px;
       background: rgba(0,0,0,0.06);
@@ -559,7 +610,7 @@
       color: #1a1810;
       line-height: 1;
     }
-    .pch-title {
+    .ph-title {
       font-family: var(--sans);
       font-size: 13px;
       font-weight: 500;
@@ -568,20 +619,20 @@
       align-items: center;
       gap: 5px;
     }
-    .pch-title-icon { font-size: 11px; color: #8c8478; }
-    .pch-messages {
+    .ph-title-icon { font-size: 11px; color: #8c8478; }
+    .ph-messages {
       padding: 0 16px;
       display: flex;
       flex-direction: column;
       gap: 14px;
       min-height: 220px;
     }
-    .pch-yield-msg {
+    .ph-yield-msg {
       display: flex;
       gap: 10px;
       align-items: flex-start;
     }
-    .pch-yield-border {
+    .ph-yield-border {
       width: 3px;
       border-radius: 2px;
       background: #c8922a;
@@ -589,14 +640,14 @@
       align-self: stretch;
       min-height: 36px;
     }
-    .pch-yield-text {
+    .ph-yield-text {
       font-size: 12px;
       font-weight: 400;
       color: #1a1810;
       line-height: 1.55;
     }
-    .pch-user-msg { display: flex; justify-content: flex-end; }
-    .pch-user-bubble {
+    .ph-user-msg { display: flex; justify-content: flex-end; }
+    .ph-user-bubble {
       background: #dedad2;
       border-radius: 14px 14px 3px 14px;
       padding: 10px 13px;
@@ -606,38 +657,51 @@
       line-height: 1.5;
       max-width: 85%;
     }
-    .pch-analyzing {
-      display: flex;
-      align-items: center;
-      gap: 7px;
+    .ph-analyzing-wrap {
+      position: relative;
+      height: 24px; /* match your element's height */
     }
-    .pch-spin {
+    .ph-analyzing-wrap .ph-analyzing {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+    .ph-icon {
       font-size: 12px;
       color: #8c8478;
-      animation: spin 2s linear infinite;
       display: inline-block;
     }
+    .ph-spin {
+      animation: spin 4s linear infinite;
+    }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .pch-analyzing-label {
+    .ph-analyzing-label {
       font-family: var(--mono);
-      font-size: 9px;
+      font-size: 10px;
       font-weight: 400;
       color: #8c8478;
       letter-spacing: 0.14em;
     }
-    .pch-input-row {
-      margin: 16px 16px 0;
-      background: #e8e2d8;
-      border-radius: 20px;
-      padding: 9px 14px;
+    .ph-input-row-wrapper {
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      gap: 6px;
+      margin: 16px 16px 0;
     }
-    .pch-input-fake { font-size: 12px; color: #b0a898; }
-    .pch-send {
-      width: 24px;
-      height: 24px;
+    .ph-input-row {
+      background: #e8e2d8;
+      border-radius: 12px;
+      padding: 7px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-grow: 1;
+    }
+    .ph-input-fake { font-size: 12px; color: #b0a898; }
+    .ph-send {
+      width: 28px;
+      height: 28px;
       background: #c8922a;
       border-radius: 50%;
       display: flex;
@@ -670,7 +734,7 @@
     .model-row-num {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.1em;
     }
@@ -680,7 +744,7 @@
     }
     .model-row-desc {
       font-size: 13px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       line-height: 1.6;
     }
@@ -693,7 +757,7 @@
     .prop-tag {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       letter-spacing: 0.06em;
       padding: 4px 10px;
@@ -717,8 +781,8 @@
     .step-cell:last-child { border-right: none; }
     .step-num {
       font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.12em;
       margin-bottom: 24px;
@@ -726,13 +790,15 @@
     }
     .step-title {
       font-family: var(--serif);
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: bold;
+      line-height: 1.3;
       margin-bottom: 12px;
       text-wrap: pretty;
     }
     .step-body {
-      font-size: 13px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       color: var(--text-dim);
       line-height: 1.7;
       text-wrap: pretty;
@@ -763,21 +829,23 @@
     .philosophy-cell:hover { background: var(--surface); }
     .philosophy-num {
       font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--amber);
       letter-spacing: 0.12em;
       margin-bottom: 20px;
     }
     .philosophy-title {
       font-family: var(--serif);
-      font-size: 22px;
+      font-size: 28px;
+      font-weight: bold;
+      line-height: 1.3;
       margin-bottom: 14px;
       line-height: 1.2;
     }
     .philosophy-body {
-      font-size: 13px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       color: var(--text-dim);
       line-height: 1.75;
       text-wrap: pretty;
@@ -826,7 +894,7 @@
     }
     .rpe-num {
       font-family: var(--mono);
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 400;
       color: var(--text);
       width: 20px;
@@ -835,7 +903,7 @@
     .rpe-desc {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       letter-spacing: 0.06em;
       width: 160px;
@@ -843,7 +911,7 @@
     .rpe-adjust {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.06em;
       white-space: nowrap;
@@ -919,7 +987,7 @@
     .cta-headline em { font-style: italic; color: var(--amber); }
     .cta-sub {
       font-size: 16px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-dim);
       max-width: 460px;
       margin: 0 auto 48px;
@@ -930,28 +998,28 @@
       display: inline-flex;
       align-items: center;
       gap: 14px;
-      background: var(--amber);
+      background: var(--btn-primary-background);
       border: none;
       cursor: pointer;
       padding: 16px 32px;
       border-radius: 2px;
-      transition: opacity 0.2s;
+      transition: all 0.2s;
       margin-bottom: 0;
     }
-    .beta-trigger:hover { opacity: 0.88; }
+    .beta-trigger:hover { background: var(--btn-primary-background-hover) }
     :root.light .beta-trigger { }
     .beta-trigger-label {
       font-family: var(--mono);
-      font-size: 12px;
+      font-size: 14px;
       font-weight: 400;
-      color: #0e0d0b;
+      color: var(--btn-primary-label);
       letter-spacing: 0.1em;
       text-transform: uppercase;
     }
     :root.light .beta-trigger-label { color: #fff; }
     .beta-trigger-arrow {
-      font-size: 12px;
-      color: #0e0d0b;
+      font-size: 14px;
+      color: var(--btn-primary-label);
       transition: transform 0.35s ease;
       line-height: 1;
       display: inline-block;
@@ -991,34 +1059,41 @@
     .beta-step:last-child { border-bottom: none; }
     .beta-step-num {
       font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
       color: var(--amber);
       letter-spacing: 0.1em;
       flex-shrink: 0;
       padding-top: 2px;
     }
     .beta-step-body {
-      font-size: 13px;
-      font-weight: 300;
+      font-size: 16px;
+      font-weight: 400;
       color: var(--text-dim);
       line-height: 1.65;
     }
     .beta-step-body a {
-      color: var(--text);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-color: var(--border-accent);
-      transition: color 0.2s, text-decoration-color 0.2s;
+      transition: all 0.2s;
+      display: inline-block;
+      padding: 2px 8px;
+      margin: 0px 1px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--btn-secondary-label);
+      border: 1px solid var(--btn-secondary-border);
+      background: var(--btn-secondary-background);
     }
     .beta-step-body a:hover {
-      color: var(--amber);
-      text-decoration-color: var(--amber);
+      color: var(--btn-secondary-label-hover);
+      border-color: var(--btn-secondary-border-hover);
+      background: var(--btn-secondary-background-hover);
     }
     .cta-footnote {
       font-family: var(--mono);
       font-size: 10px;
-      font-weight: 300;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.08em;
       margin-top: 20px;
@@ -1033,15 +1108,16 @@
       align-items: center;
     }
     .footer-logo {
-      font-family: var(--serif);
-      font-size: 17px;
-      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--text-muted);
       text-decoration: none;
+      text-transform: uppercase;
     }
     .footer-copy {
       font-family: var(--mono);
-      font-size: 10px;
-      font-weight: 300;
+      font-size: 11px;
+      font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.08em;
     }
@@ -1098,10 +1174,10 @@
       background: radial-gradient(circle, rgba(160,110,30,0.07) 0%, transparent 70%);
     }
     :root.light .phone-log-btn { color: #fff; }
-    :root.light .btn-primary { color: #fff; }
+    :root.light .btn-label { color: #fff; }
 
     /* Light mode: heavier weights for readability */
-    :root.light body { font-weight: 400; }
+    :root.light body { font-weight: 500; }
     :root.light .section-intro,
     :root.light .feature-body,
     :root.light .philosophy-body,
@@ -1114,7 +1190,7 @@
     :root.light .chat-input-fake,
     :root.light .hero-sub,
     :root.light .cta-sub,
-    :root.light .beta-step-body { font-weight: 400; }
+    :root.light .beta-step-body { font-weight: 500; }
 
     :root.light .nav-links a,
     :root.light .theme-toggle,
@@ -1135,7 +1211,7 @@
     :root.light .cta-footnote,
     :root.light .footer-copy,
     :root.light .hero-label,
-    :root.light .hero-scroll-hint { font-weight: 400; }
+    :root.light .hero-scroll-hint { font-weight: 500; }
 
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
@@ -1146,7 +1222,8 @@
       .session-section { grid-template-columns: 1fr; }
       .chat-section { grid-template-columns: 1fr; }
       .philosophy-grid { grid-template-columns: 1fr; }
-      .steps-grid { grid-template-columns: 1fr 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .step-connector { top: auto; right: auto; left: 50%; bottom: -12px; transform: translateX(-50%); width: 1px; height: 24px; }
       .rpe-layout { grid-template-columns: 1fr; }
       .model-row { grid-template-columns: 32px 120px 1fr; }
       .model-row-props { display: none; }
@@ -1168,8 +1245,18 @@
     <li><a href="#philosophy">Philosophy</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:24px;">
-    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">Light</button>
     <button class="nav-cta" id="navBetaBtn">Download</button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+      <svg width="1rem" height="1rem" viewBox="0 0 253 253" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M134.88 0H118.02V44.3699H134.88V0Z" fill="currentColor"/>
+        <path d="M134.88 208.53H118.02V252.9H134.88V208.53Z" fill="currentColor"/>
+        <path d="M44.3699 118.02H0V134.88H44.3699V118.02Z" fill="currentColor"/>
+        <path d="M252.9 118.02H208.53V134.88H252.9V118.02Z" fill="currentColor"/>
+        <path d="M209.901 31.0758L165.756 75.2209C154.522 66.5661 140.863 61.82 126.45 61.82C90.8136 61.82 61.82 90.8136 61.82 126.45C61.82 140.865 66.5661 154.525 75.2209 165.759L31.0758 209.901L42.9958 221.821L221.821 42.9958L209.901 31.0758Z" fill="currentColor"/>
+        <path d="M42.9946 31.0873L31.0729 43.009L62.4468 74.3829L74.3685 62.4612L42.9946 31.0873Z" fill="currentColor"/>
+        <path d="M190.45 178.516L178.528 190.438L209.902 221.812L221.824 209.89L190.45 178.516Z" fill="currentColor"/>
+      </svg>
+    </button>
   </div>
 </nav>
 
@@ -1186,11 +1273,11 @@
   </div>
   <h1 class="hero-headline">A precision instrument,<br /><em>made for the gym.</em></h1>
   <p class="hero-sub">
-    Yield is like having a personal trainer who's ready to help 24 hours/day. Tell it what you want to do and where you're starting from. It builds you a structured program and guides you through every session.
+    Yield is like having a personal trainer who's ready to help any time of the day. Just share what you'd like to do and where you're starting from. Yield builds you a structured program and guides you every step of the way.
   </p>
-  <!--<div class="hero-actions">
-    <span class="hero-scroll-hint">↓ See how it works</span>
-  </div>-->
+  <div class="hero-actions">
+    <span class="hero-scroll-line">↓</span><span class="hero-scroll-hint">See how it works</span>
+  </div>
 </section>
 
 <!-- STATS
@@ -1222,25 +1309,25 @@
     <div class="step-cell">
       <span class="step-num">01</span>
       <div class="step-title">You answer a few questions</div>
-      <div class="step-body">Yield asks about your goals, your schedule, and where you're starting from. That's all it needs. From that conversation, it builds a program that's specific to you — not a template with your name on it.</div>
+      <div class="step-body">Yield asks about your goals, your schedule, and about your gym. That's all it needs. From that conversation, it builds a program just for you.</div>
       <div class="step-connector"></div>
     </div>
     <div class="step-cell">
       <span class="step-num">02</span>
       <div class="step-title">One thing at a time</div>
-      <div class="step-body">When you're at the gym, Yield shows you exactly what to do next. The movement, the weight, the reps. You do the set, log it, and move on. There's nothing to figure out between sets.</div>
+      <div class="step-body">When you're at the gym, Yield shows you exactly what to do next. You do the set, log it, and move on. There's nothing to figure out.</div>
       <div class="step-connector"></div>
     </div>
     <div class="step-cell">
       <span class="step-num">03</span>
       <div class="step-title">Ask anything, mid-session</div>
-      <div class="step-body">During an exercise, you can ask Yield a question or tell it something to remember. It can explain a movement, offer a modification, or pull up a reference image when a description isn't enough.</div>
+      <div class="step-body">During an exercise, you can ask Yield questions. It can explain a movement, offer a modification, or pull up a reference image when a description isn't enough.</div>
       <div class="step-connector"></div>
     </div>
     <div class="step-cell">
       <span class="step-num">04</span>
       <div class="step-title">The program refines itself</div>
-      <div class="step-body">Between sessions, Yield looks at how you rated each exercise and any notes you left. It uses that to make small adjustments — weight, volume, pacing — so the program keeps fitting you as you progress.</div>
+      <div class="step-body">Between sessions, Yield looks at how you rated each exercise and anything you noted. It uses that to make small adjustments to weight, volume, and pacing.</div>
     </div>
   </div>
 </section>
@@ -1251,12 +1338,12 @@
     <div class="session-text">
       <p class="section-tag reveal">Session interface</p>
       <h2 class="section-header reveal">Designed to use<br /><em>at the gym.</em></h2>
-      <p class="section-intro reveal" style="margin-bottom: 40px;">
-        The session screen shows you the current movement, the target weight and reps, and your logged sets. That's it. The type is large enough to read from the floor.
+      <p class="section-intro reveal">
+        Because Yield is designed to be read while your phone is on the floor, you always have a clear view of what you need to know. 
       </p>
-      <div class="philosophy-body reveal" style="font-size: 14px; line-height: 1.8; color: var(--text-dim); max-width: 460px;">
-        After you log a set, Yield asks you to rate the effort from 1 to 10. That rating, along with the actual weight and reps, is what drives the load adjustments in your next session. When the session ends, you get a summary showing any PRs and any sets where the effort was unusually high.
-      </div>
+      <p class="section-intro reveal">
+        After you log a set, Yield asks you to rate the effort from 1 to 10. That rating is what drives any adjustments for your next session. When the session ends, Yield summarizes how it went along with any personal records.
+      </p>
     </div>
     <div class="phone-wrap reveal">
       <div class="phone-frame phone-frame-light">
@@ -1301,12 +1388,12 @@
     <div>
       <p class="section-tag reveal">Adaptive load</p>
       <h2 class="section-header reveal">The program adjusts<br /><em>based on what you log.</em></h2>
-      <p class="section-intro reveal" style="margin-bottom: 36px;">
-        RPE stands for Rate of Perceived Exertion. It's a simple 1&ndash;10 scale for rating how hard a set was &mdash; 10 means you couldn't have done another rep, 6 means you had plenty left in the tank.
+      <p class="section-intro reveal">
+        RPE stands for Rate of Perceived Exertion. It's a simple 1&ndash;10 scale for rating how hard a set was. 10 means you couldn't have done another rep, 5 means you had plenty left in the tank.
       </p>
-      <div class="philosophy-body reveal" style="font-size: 14px; line-height: 1.8; color: var(--text-dim); max-width: 440px;">
-        Yield uses those ratings to adjust the weights in upcoming sessions. Had a hard week? The next one will be a little lighter. Had an easy one? The weight goes up. You don't have to think about any of this — it just happens based on what you logged.
-      </div>
+      <p class="section-intro reveal">
+        Yield uses those ratings to adjust the weights in upcoming sessions. Had a hard week? The next one will be a little lighter. Had an easy one? You're ready for more. 
+      </p>
     </div>
     <div class="rpe-scale reveal">
       <div class="rpe-row">
@@ -1361,49 +1448,56 @@
     <div>
       <p class="section-tag reveal">In the gym and out</p>
       <h2 class="section-header reveal">You can message Yield<br /><em>whenever you need to.</em></h2>
-      <p class="section-intro reveal" style="margin-bottom: 36px;">
-        Between sets, you can ask Yield something and it'll know exactly where you are in your session — which movement, what you've logged, how the effort's been tracking. Outside the gym, you can make changes to your program the same way.
+      <p class="section-intro reveal">
+        While at the gym, you can ask Yield something and it'll know exactly which movement you're on, what you've logged, how your effort's been tracking.
       </p>
-      <div class="philosophy-body reveal" style="font-size: 14px; line-height: 1.8; color: var(--text-dim); max-width: 440px;">
-        Getting things done is as easy as sending a message. Yield knows your program and responds with what's useful given where you are.
-      </div>
+      <p class="section-intro reveal">
+        Outside the gym, making a change is as easy as sending a message. Yield will share advice and makes adjustments based on where you are.
+      </p>
     </div>
     <div class="phone-wrap reveal" id="chatWindow">
       <div class="phone-frame phone-frame-light">
-        <div class="phone-notch"></div>
-
-        <div class="pch-nav">
-          <div class="pch-back">&#x2039;</div>
-          <div class="pch-title">
-            <span class="pch-title-icon">⊞</span> Yield
-          </div>
-          <div class="pch-back" style="opacity:0">&#x2039;</div>
-        </div>
-
-        <div class="pch-messages" id="pchMessages">
-          <div class="pch-yield-msg" id="pchY1">
-            <div class="pch-yield-border"></div>
-            <div class="pch-yield-text">You have a 6-Week Enhancement protocol targeting April 16th. You're 3 sessions in with 25 remaining. What would you like to change?</div>
-          </div>
-
-          <div class="pch-user-msg" id="pchU1">
-            <div class="pch-user-bubble">I'm recovering from being sick. Can you reduce the time for my planks and treadmill tomorrow?</div>
-          </div>
-
-          <div class="pch-analyzing" id="pchA1">
-            <span class="pch-spin">✳</span>
-            <span class="pch-analyzing-label">ANALYZING</span>
-          </div>
-
-          <div class="pch-yield-msg" id="pchY2" style="opacity:0;">
-            <div class="pch-yield-border"></div>
-            <div class="pch-yield-text">I'll reduce the plank and treadmill durations for tomorrow. Let me adjust those for you.</div>
+        <div>
+          <div class="phone-notch"></div>
+          <div class="phone-toolbar">
+            <div class="ph-back">&#x2039;</div>
+            <div class="ph-title">
+              <span class="ph-title-icon">⊞</span> Yield
+            </div>
+            <div class="ph-back" style="opacity:0">&#x2039;</div>
           </div>
         </div>
+        <div class="ph-messages" id="pchMessages">
+          <div class="ph-yield-msg" id="pchY1">
+            <div class="ph-yield-border"></div>
+            <div class="ph-yield-text">You have a 6-Week Enhancement protocol targeting April 16th. You're 3 sessions in with 25 remaining. What would you like to change?</div>
+          </div>
 
-        <div class="pch-input-row">
-          <div class="pch-input-fake">Your message</div>
-          <div class="pch-send">↑</div>
+          <div class="ph-user-msg" id="pchU1">
+            <div class="ph-user-bubble">I'm recovering from being sick. Can you reduce the time for my planks and treadmill tomorrow?</div>
+          </div>
+
+          <div class="ph-analyzing-wrap">
+            <div class="ph-analyzing" id="pchA1">
+              <span class="ph-icon ph-spin">✳</span>
+              <span class="ph-analyzing-label">ANALYZING</span>
+            </div>
+            <div class="ph-analyzing" id="pchA2">
+              <span class="ph-icon">✓</span>
+              <span class="ph-analyzing-label">UPDATED</span>
+            </div>
+          </div>
+
+          <div class="ph-yield-msg" id="pchY2" style="opacity:0;">
+            <div class="ph-yield-border"></div>
+            <div class="ph-yield-text">I've reduced your plank and treadmill durations to 70% for tomorrow. Let me know if you need any other adjustments.</div>
+          </div>
+        </div>
+        <div class="ph-input-row-wrapper">
+          <div class="ph-input-row">
+            <div class="ph-input-fake">Your message</div>
+          </div>
+          <div class="ph-send">↑</div>
         </div>
       </div>
     </div>
@@ -1414,38 +1508,38 @@
 <section id="philosophy" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
   <p class="section-tag reveal">Philosophy</p>
   <h2 class="section-header reveal">Why it's built<br /><em>the way it is.</em></h2>
-  <p class="section-intro reveal">Most training apps are built around keeping you engaged. Yield is built around keeping your data clean and your sessions focused.</p>
+  <p class="section-intro reveal" style="margin-bottom: 36px;">Most training apps are built around keeping you engaged. Yield is built to ease your mind so you can stay focused on your session.</p>
 
   <div class="philosophy-grid reveal">
     <div class="philosophy-cell">
       <div class="philosophy-num">01</div>
       <div class="philosophy-title">One thing at a time</div>
-      <div class="philosophy-body">The session screen shows what you need for the current set. There's no dashboard, no feed, nothing in the background. When you're done with a session, you leave.</div>
+      <div class="philosophy-body">While working out, you only see what's needed for the current set. There's no dashboard, no feed, and nothing in the background.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">02</div>
       <div class="philosophy-title">Goals with dates</div>
-      <div class="philosophy-body">Your protocol isn't a list of workouts. It has objectives — specific things you're trying to achieve — with indicators you can measure and dates you're working toward.</div>
+      <div class="philosophy-body">Your protocol isn't a list of workouts. It has objectives you're trying to achieve, indicators you can measure, and dates you're working toward.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">03</div>
-      <div class="philosophy-title">Records over motivation</div>
-      <div class="philosophy-body">Yield doesn't send you streaks or badges. It keeps an accurate log of what you did. Over time, that record is more useful than any amount of encouragement.</div>
+      <div class="philosophy-title">No games</div>
+      <div class="philosophy-body">Yield doesn't send you streaks or badges. It keeps an accurate log of what you did. Over time, seeing real results can be far more motivating.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">04</div>
       <div class="philosophy-title">No account required</div>
-      <div class="philosophy-body">Everything is stored locally on your phone using SwiftData. The only network requests are for the chat features and exercise reference images. Nothing is sent to a server and stored.</div>
+      <div class="philosophy-body">Everything is stored locally on your phone using SwiftData. Network requests for chat features and exercise reference images are never logged.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">05</div>
-      <div class="philosophy-title">Works at any level</div>
-      <div class="philosophy-body">Yield explains what it needs you to know when it needs you to know it. Whether you're building your first program or refining one that's been running for years, the structure stays the same &mdash; only the complexity of your goals changes.</div>
+      <div class="philosophy-title">Works for any level</div>
+      <div class="philosophy-body">Yield works just as well whether you're new to the gym or working on nailing your Iron X. It tells you what you need to know when you need to know it.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">06</div>
       <div class="philosophy-title">Gets better over time</div>
-      <div class="philosophy-body">The more sessions you log, the more accurately the program can calibrate to you. It's not a fixed plan — it's a plan that learns exactly what you need.</div>
+      <div class="philosophy-body">The more sessions you log, the more accurately the program can calibrate to you. You get exactly what you need and nothing more.</div>
     </div>
   </div>
 </section>
@@ -1475,7 +1569,7 @@
         <div class="beta-step">
           <span class="beta-step-num">02</span>
           <div class="beta-step-body">
-            Return here to <a href="https://testflight.apple.com/join/FRgF9wpH" target="_blank" rel="noopener">Install Yield</a>.
+            Return here to <a href="https://testflight.apple.com/join/FRgF9wpH" target="_blank" rel="noopener">Install Yield</a>
           </div>
         </div>
       </div>
@@ -1520,8 +1614,9 @@
     const pchY1 = document.getElementById('pchY1');
     const pchU1 = document.getElementById('pchU1');
     const pchA1 = document.getElementById('pchA1');
+    const pchA2 = document.getElementById('pchA2');
     const pchY2 = document.getElementById('pchY2');
-    const chatEls = [pchY1, pchU1, pchA1, pchY2];
+    const chatEls = [pchY1, pchU1, pchA1, pchA2, pchY2];
     let chatTimers = [];
 
     const resetChat = () => {
@@ -1531,6 +1626,7 @@
         if (!el) return;
         el.style.transition = 'none';
         el.style.opacity = '0';
+        el.style.display = '';
       });
     };
 
@@ -1548,10 +1644,14 @@
       fade(pchA1, 2400);
       // Hide "analyzing" just before response appears
       const t = setTimeout(() => {
-        if (pchA1) { pchA1.style.transition = 'opacity 0.4s ease'; pchA1.style.opacity = '0'; }
+        if (pchA1) { 
+          pchA1.style.transition = 'opacity 0.4s ease';
+          pchA1.style.opacity = '0';  
+        }
       }, 3500);
       chatTimers.push(t);
-      fade(pchY2, 3800);
+      fade(pchA2, 3900);
+      fade(pchY2, 4200);
     };
 
     // Set initial state
@@ -1615,7 +1715,7 @@
 
   const applyTheme = (isLight) => {
     root.classList.toggle('light', isLight);
-    toggle.textContent = isLight ? 'Dark' : 'Light';
+    //toggle.textContent = isLight ? 'Dark' : 'Light';
     updateImage();
   };
 
@@ -1637,7 +1737,7 @@
   // Manual toggle saves preference
   toggle.addEventListener('click', () => {
     const isLight = root.classList.toggle('light');
-    toggle.textContent = isLight ? 'Dark' : 'Light';
+    //toggle.textContent = isLight ? 'Dark' : 'Light';
     localStorage.setItem('yield-theme', isLight ? 'light' : 'dark');
     updateImage();
   });
