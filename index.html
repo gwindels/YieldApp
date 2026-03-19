@@ -961,22 +961,24 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0;
-      border: 1px solid var(--border);
+      /*border: 1px solid var(--border);*/
     }
     .step-cell {
-      padding: 40px 32px;
-      border-right: 1px solid var(--border);
+      padding: 36px 16px;
+      /*border-right: 1px solid var(--border);*/
       position: relative;
+      margin-right: 16px;
     }
-    .step-cell:last-child { border-right: none; }
+    .step-cell:first-child { padding-left: 0px; }
     .step-num {
       font-family: var(--mono);
       font-size: 12px;
       font-weight: 400;
       color: var(--text-muted);
       letter-spacing: 0.12em;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       display: block;
+      display: none;
     }
     .step-title {
       font-family: var(--serif);
@@ -998,9 +1000,10 @@
       top: 50%; right: -12px;
       transform: translateY(-50%);
       width: 24px;
-      height: 1px;
-      background: var(--border-accent);
+      height: 2px;
+      background: var(--amber);
       z-index: 2;
+      opacity: 0.5;
     }
     .step-cell:last-child .step-connector { display: none; }
 
@@ -1014,7 +1017,7 @@
     }
     .philosophy-cell {
       background: var(--bg);
-      padding: 48px;
+      padding: 36px 42px 42px;
     }
     .philosophy-num {
       font-family: var(--mono);
@@ -1122,7 +1125,7 @@
     /* ── PRIVATE DATA SECTION ────────────────────────────── */
     .private-section {
       text-align: center;
-      padding: 120px 48px;
+      padding: 120px 48px 120px;
     }
     .private-icon {
       margin: 0 auto 40px;
@@ -1159,7 +1162,7 @@
 
     /* ── CTA ─────────────────────────────────────────────── */
     .cta-section {
-      padding: 120px 48px;
+      padding: 60px 48px 120px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -1409,18 +1412,27 @@
     :root.light .hero-label,
     :root.light .hero-scroll-hint { font-weight: 400; }
 
-    @media (max-width: 900px) {
+    @media (max-width: 1023px) {
+      .step-cell { padding: 16px; }
+      .step-cell:nth-child(odd) { padding-left: 0px; }
+      .steps-grid { grid-template-columns: repeat(2, 1fr); }
+      .step-connector { display: none; }
+      .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (max-width: 767px) {
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
       .hero { padding: 0 24px 80px; }
       section { padding: 80px 24px; }
-      .features-layout { grid-template-columns: 1fr; }
-      .session-section { grid-template-columns: 1fr; }
-      .chat-section { grid-template-columns: 1fr; }
+      .features-layout { grid-template-columns: 1fr; gap: 30px; }
+      .session-section { grid-template-columns: 1fr; gap: 30px; }
+      .chat-section { grid-template-columns: 1fr; gap: 30px; }
       .philosophy-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
-      .step-connector { top: auto; right: auto; left: 50%; bottom: -12px; transform: translateX(-50%); width: 1px; height: 24px; }
-      .rpe-layout { grid-template-columns: 1fr; }
+      .step-cell { padding: 20px 16px 20px 0px; }
+      .step-connector { display: inline-block; top: auto; right: auto; left: 1%; bottom: -10px; transform: translateX(-50%); width: 2px; height: 20px; }
+      .rpe-layout { grid-template-columns: 1fr; gap: 30px; }
       .model-row { grid-template-columns: 32px 120px 1fr; }
       .model-row-props { display: none; }
       .stats-bar { grid-template-columns: 1fr 1fr; }
