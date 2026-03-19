@@ -738,19 +738,46 @@
     }
     .ph-rpe-title {
       font-family: var(--serif);
-      font-size: 22px;
+      font-size: 26px;
+      line-height: 1.1;
+      color: var(--text);
+      text-align: center;
+      padding: 16px 20px 42px;
+    }
+    .ph-rpe-label {
+      font-family: var(--serif);
+      font-size: 18px;
       line-height: 1.1;
       color: var(--text);
       text-align: center;
       padding: 16px 20px 4px;
     }
+    .ph-rpe-caption {
+      font-family: var(--sans);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 16px;
+    }
+    .ph-rpe-caption svg.ph-rpe-icon {
+      height: 10px;
+    } 
+    .ph-rep-caption-text {
+      padding-top: 2px;
+    }
+
     .ph-rpe-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(2, 1fr);
       gap: 9px;
       align-items: stretch;
-      margin: 16px 16px 40px;
+      margin: 16px 16px 20px;
     }
     .ph-rpe-grid > * {
       background-color: var(--ph-background-raised);
@@ -1447,26 +1474,6 @@
   </div>
 </section>
 
-<!-- STATS
-<div class="stats-bar">
-  <div class="stat">
-    <div class="stat-value">No templates</div>
-    <div class="stat-label">Your program comes from your conversation with Yield, not a pre-built plan you've been slotted into</div>
-  </div>
-  <div class="stat">
-    <div class="stat-value">RPE-driven</div>
-    <div class="stat-label">After each set you rate how hard it was. That rating determines the weight in your next session</div>
-  </div>
-  <div class="stat">
-    <div class="stat-value">Local data</div>
-    <div class="stat-label">Your training history lives on your phone. There's no account to create and no server involved</div>
-  </div>
-  <div class="stat">
-    <div class="stat-value">Zero noise</div>
-    <div class="stat-label">During a session, the screen shows the current set. Nothing else competes for your attention</div>
-  </div>
-</div> -->
-
 <!-- HOW IT WORKS -->
 <section id="how-it-works">
   <p class="section-tag reveal">How it works</p>
@@ -1559,8 +1566,8 @@
               <div class="ph-toolbar-text">Skip</div>
             </div>
             <div class="phone-content">
-              <div class="pmv-counter">SET 2 COMPLETE</div>
-              <div class="ph-rpe-title">Perceived Exertion</div>
+              <div class="ph-rpe-title">Set 2 Complete</div>
+              <div class="ph-rpe-label">Rate Your Perceived Exertion</div>
               <div class="ph-rpe-grid">
                 <div class="rpe-low">1</div>
                 <div class="rpe-low">2</div>
@@ -1573,6 +1580,14 @@
                 <div class="rpe-high">9</div>
                 <div class="rpe-high">10</div>
               </div>
+              <div class="ph-rpe-caption">
+                  <svg class="ph-rpe-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.002 9.46289">
+                    <g>
+                      <rect height="9.46289" opacity="0" width="10.002" x="0" y="0"/>
+                      <path d="M9.46289 4.72852C9.46289 7.33594 7.3418 9.45703 4.72852 9.45703C2.12109 9.45703 0 7.33594 0 4.72852C0 2.12109 2.12109 0 4.72852 0C7.3418 0 9.46289 2.12109 9.46289 4.72852ZM3.99609 3.90234C3.78516 3.90234 3.60938 4.07227 3.60938 4.27734C3.60938 4.50586 3.78516 4.66406 3.99609 4.66406L4.44141 4.66406L4.44141 6.66797L3.9082 6.66797C3.68555 6.66797 3.51562 6.83789 3.51562 7.04297C3.51562 7.27148 3.68555 7.42969 3.9082 7.42969L5.8418 7.42969C6.05859 7.42969 6.23438 7.27148 6.23438 7.04297C6.23438 6.83789 6.05859 6.66797 5.8418 6.66797L5.30859 6.66797L5.30859 4.39453C5.30859 4.10156 5.16211 3.90234 4.88672 3.90234ZM3.99609 2.47266C3.99609 2.85352 4.30078 3.16406 4.68164 3.16406C5.0625 3.16406 5.35547 2.85352 5.35547 2.47266C5.35547 2.08594 5.0625 1.78711 4.68164 1.78711C4.30078 1.78711 3.99609 2.08594 3.99609 2.47266Z" fill="currentColor" fill-opacity="0.85"/>
+                    </g>
+                  </svg>
+                <div class="ph-rep-caption-text">What is Perceived Exertion?</div>
             </div>
           </div>
         </div>
