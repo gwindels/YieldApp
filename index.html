@@ -335,7 +335,7 @@
 
     /* ── SECTIONS ────────────────────────────────────────── */
     section {
-      padding: 120px 48px;
+      padding: 100px 48px;
       position: relative;
     }
     .section-tag {
@@ -1161,7 +1161,6 @@
     .cta-section {
       padding: 120px 48px;
       text-align: center;
-      border-top: 1px solid var(--border);
       position: relative;
       overflow: hidden;
     }
@@ -1467,7 +1466,7 @@
   </div>
   <h1 class="hero-headline">A precision instrument,<br /><em>made for the gym.</em></h1>
   <p class="hero-sub">
-    Yield is like having a personal trainer who's ready to help any time of the day. Just share what you'd like to do and where you're starting from. Yield builds you a structured program and guides you every step of the way.
+    Yield is a training app that builds a program around you, tracks your progress, and tells you exactly what to do each day. It adapts when life gets in the way, whether that means a lighter week, a workout you can do at home, or just an answer to a question at 11pm. No appointment needed.
   </p>
   <div class="hero-actions">
     <span class="hero-scroll-line">↓</span><span class="hero-scroll-hint">See how it works</span>
@@ -1513,10 +1512,7 @@
       <p class="section-tag reveal">Session interface</p>
       <h2 class="section-header reveal">Designed to use<em>at the gym.</em></h2>
       <p class="section-intro reveal">
-        Because Yield is designed to be read while your phone is on the floor, you always have a clear view of what you need to know. 
-      </p>
-      <p class="section-intro reveal">
-        After you log a set, Yield asks you to rate the effort from 1 to 10. That rating is what drives any adjustments for your next session. When the session ends, Yield summarizes how it went.
+        Yield is designed to be read from the floor. Set your phone down between sets and you'll always have a clear view of what's next. When you're finished, it summarizes your session and calibrates the next one.
       </p>
     </div>
     <div class="phone-wrap reveal" id="sessionPhone">
@@ -1561,10 +1557,6 @@
             </div>
           </div>
           <div class="phone-view">
-            <div class="phone-toolbar">
-              <div class="ph-back" style="opacity:0">&#x2039;</div>
-              <div class="ph-toolbar-text">Skip</div>
-            </div>
             <div class="phone-content">
               <div class="ph-rpe-title">Set 2 Complete</div>
               <div class="ph-rpe-label">Rate Your Perceived Exertion</div>
@@ -1601,12 +1593,12 @@
   <div class="rpe-layout">
     <div>
       <p class="section-tag reveal">Adaptive load</p>
-      <h2 class="section-header reveal">The program adjusts<em>based on what you log.</em></h2>
+      <h2 class="section-header reveal">The program adjusts <em>based on what you log.</em></h2>
       <p class="section-intro reveal">
         RPE stands for Rate of Perceived Exertion. It's a simple 1&ndash;10 scale for rating how hard a set was. 10 means you couldn't have done another rep, 5 means you had plenty left in the tank.
       </p>
       <p class="section-intro reveal">
-        Yield uses those ratings to adjust the weights in upcoming sessions. Had a hard week? The next one will be a little lighter. Had an easy one? You're ready for more. 
+        Yield uses those ratings to adjust weights in upcoming sessions. Lighter after a hard week, heavier after an easy one.
       </p>
     </div>
     <div class="rpe-grid reveal">
@@ -1649,12 +1641,12 @@
   <div class="chat-section">
     <div>
       <p class="section-tag reveal">In the gym and out</p>
-      <h2 class="section-header reveal">You can message Yield<em>whenever you need to.</em></h2>
+      <h2 class="section-header reveal">You can message Yield <em>whenever you need to.</em></h2>
       <p class="section-intro reveal">
         While at the gym, you can ask Yield something and it'll know exactly which movement you're on, what you've logged, and how your effort's been tracking.
       </p>
       <p class="section-intro reveal">
-        Outside the gym, making a change is as easy as sending a message. Yield will share advice and makes adjustments based on where you are.
+        Outside the gym, just send a message. Yield adjusts based on what you tell it.
       </p>
     </div>
     <div class="phone-wrap reveal" id="chatWindow">
@@ -1721,10 +1713,10 @@
 </section>
 
 <!-- PHILOSOPHY -->
-<section id="philosophy" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+<section id="philosophy" >
   <p class="section-tag reveal">Philosophy</p>
   <h2 class="section-header single reveal">Why it's built <em>the way it is.</em></h2>
-  <p class="section-intro reveal" style="margin-bottom: 36px;">Most training apps are built around keeping you engaged. Yield is built to ease your mind so you can stay focused on your session.</p>
+  <p class="section-intro reveal" style="margin-bottom: 36px;">Yield is built to ease your mind so you focus on your session.</p>
 
   <div class="philosophy-grid reveal">
     <div class="philosophy-cell">
@@ -1735,27 +1727,26 @@
     <div class="philosophy-cell">
       <div class="philosophy-num">02</div>
       <div class="philosophy-title">Goals with dates</div>
-      <div class="philosophy-body">Your protocol isn't a list of workouts. It has objectives you're trying to achieve, indicators you can measure, and dates you're working toward.</div>
+      <div class="philosophy-body">Your protocol isn't a list of workouts. It has objectives you're trying to achieve, detailed records, and dates you're working toward.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">03</div>
       <div class="philosophy-title">No games</div>
-      <div class="philosophy-body">Yield doesn't send you streaks or badges. It keeps an accurate log of what you did. Over time, seeing real results can be far more motivating.</div>
+      <div class="philosophy-body">Yield doesn't send you streaks or badges. It keeps an accurate log of what you did, and lets the results speak for themselves.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">04</div>
-      <div class="philosophy-title">No account required</div>
-      <div class="philosophy-body">Everything is stored locally on your phone using SwiftData. Network requests for chat features and exercise reference images are never logged.</div>
+      <div class="philosophy-title">Gets better over time</div>
+      <div class="philosophy-body">The more sessions you log, the more precisely it calibrates to you. You get exactly what you need and nothing more.</div>
     </div>
     <div class="philosophy-cell">
       <div class="philosophy-num">05</div>
       <div class="philosophy-title">Works for any level</div>
-      <div class="philosophy-body">Yield works just as well whether you're new to the gym or working on nailing your Iron X. It tells you what you need to know when you need to know it.</div>
+      <div class="philosophy-body">Yield works just as well whether you're new to the gym, chasing a personal record, or working on nailing your Iron X.</div>
     </div>
     <div class="philosophy-cell">
-      <div class="philosophy-num">06</div>
-      <div class="philosophy-title">Gets better over time</div>
-      <div class="philosophy-body">The more sessions you log, the more accurately the program can calibrate to you. You get exactly what you need and nothing more.</div>
+      <div class="philosophy-num">06</div><div class="philosophy-title">No account required</div>
+      <div class="philosophy-body">Everything is stored on your phone. Nothing you do in Yield is tracked or logged on a server.</div>
     </div>
   </div>
 </section>
@@ -1768,10 +1759,10 @@
   </div>
     <p class="section-tag reveal" style="text-align:center">TestFlight Beta</p>
   <h2 class="cta-headline reveal">Try it free<br /><em>while it's in beta.</em></h2>
-  <p class="cta-sub reveal">Yield is available now through TestFlight. iPhone only. No account needed to get started.</p>
+  <p class="cta-sub reveal">Yield is available on iPhone through Apple's TestFlight beta program. No account required.</p>
   <div class="reveal">
     <button class="beta-trigger" id="betaTrigger" aria-expanded="false">
-      <span class="beta-trigger-label">Get Beta App</span>
+      <span class="beta-trigger-label">Install App</span>
       <span class="beta-trigger-arrow">↓</span>
     </button>
     <div class="beta-steps-wrap" id="betaSteps" aria-hidden="true">
@@ -1790,7 +1781,7 @@
         </div>
       </div>
     </div>
-    <p class="cta-footnote">Requires iOS 17 or later · iPhone only</p>
+    <p class="cta-footnote">Requires iOS 17 or later</p>
   </div>
 </section>
 
@@ -1881,7 +1872,7 @@
       sessionTimers.push(setTimeout(() => {
         touchDot.className = 'touch-dot lift';
         smoothScrollTo(sessionScroller, sessionScroller.scrollWidth, 450);
-      }, 4100));
+      }, 3900));
     };
 
     // Initial state
