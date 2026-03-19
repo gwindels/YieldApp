@@ -51,6 +51,7 @@
       --ph-text-dim: #8C8677;
       --ph-accent: #E8A020;
       --ph-glass: rgba(255, 255, 255, 0.05);
+      --ph-red: rgb(255, 92, 94);
     }
 
     :root.light {
@@ -90,6 +91,7 @@
       --ph-text-dim: #8B8476;
       --ph-accent: #C07808;
       --ph-glass: rgba(255, 255, 255, 0.4);
+      --ph-red: rgb(229, 7, 0);
     }
 
     html { scroll-behavior: smooth; }
@@ -467,15 +469,34 @@
     }
     .phone-frame {
       width: 260px;
-      min-height: 540px;
       border-radius: 36px;
       padding: 16px 0 28px;
       position: relative;
       flex-shrink: 0;
       overflow: hidden;
       display: flex;
-      justify-content: space-between;
+      justify-content: stretch;
       flex-direction: column;
+    }
+    .phone-view-wrapper {
+      position: relative;
+      flex-shrink: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: stretch;
+      overflow-x: scroll;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .phone-view-wrapper::-webkit-scrollbar { display: none; }
+    .phone-view {
+      display: flex;
+      min-height: 460px;
+      min-width: 250px;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: space-between;
+      flex-grow: 1;
     }
     
     /* Light-UI phone — matches real app appearance */
@@ -509,6 +530,35 @@
       display: flex;
       justify-content: center;
       gap: 0px;
+    }
+    .touch-dot {
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(232, 160, 32, 0.25);
+      box-shadow: 0 0 12px 4px rgba(232, 160, 32, 0.08);
+      pointer-events: none;
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+      transition: opacity 0.2s ease, transform 0.5s ease, background 0.3s ease;
+      z-index: 10;
+    }
+    .touch-dot.visible {
+      opacity: 1;
+      background: rgba(232, 160, 32, 0.45);
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .touch-dot.pressed {
+      opacity: 1;
+      background: rgba(232, 160, 32, 0.35);
+      transform: translate(-50%, -50%) scale(0.75);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .touch-dot.lift {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(1.1);
+      transition: opacity 0.25s ease, transform 0.25s ease;
     }
 
     /* ── MOVEMENT DETAIL MOCKUP ──────────────────────────── */
@@ -588,7 +638,7 @@
       margin: 0 16px 16px;
       background: var(--ph-background-raised);
       border-radius: 5px;
-      padding: 11px 16px 12px;
+      padding: 8px 16px 9px;
       text-align: center;
       border: 1px solid var(--ph-border-mid);
     }
@@ -652,6 +702,21 @@
       color: var(--ph-text-primary);
       line-height: 1;
     }
+    .ph-toolbar-text {
+      height: 32px;
+      width: auto;
+      background: var(--ph-glass);
+      border: 1px solid var(--ph-border);
+      border-radius: 999rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0px 0.9em;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--ph-text-mid);
+      line-height: 1;
+    }
     .ph-keyboard svg {
       width: 17px;
     }
@@ -671,11 +736,51 @@
       height: 11.5px;
       color: var(--ph-text-primary);
     }
+    .ph-rpe-title {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.1;
+      color: var(--text);
+      text-align: center;
+      padding: 16px 20px 4px;
+    }
+    .ph-rpe-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 9px;
+      align-items: stretch;
+      margin: 16px 16px 40px;
+    }
+    .ph-rpe-grid > * {
+      background-color: var(--ph-background-raised);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      height: 40px;
+      font-size: 18px;
+    }
+
+    .ph-rpe-grid .rpe-low {
+      border: 1px solid var(--ph-border-mid);
+      color: var(--ph-text-dim);
+    }
+    .ph-rpe-grid .rpe-mid {
+      border: 1px solid var(--ph-accent);
+      color: var(--ph-accent);
+    }
+    .ph-rpe-grid .rpe-high {
+      border: 1px solid var(--ph-red);
+      color: var(--ph-red);
+    }
+    
     .ph-messages {
       padding: 0 16px;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      flex-grow: 1;
       min-height: 220px;
     }
     .ph-yield-msg {
@@ -1404,51 +1509,72 @@
         Because Yield is designed to be read while your phone is on the floor, you always have a clear view of what you need to know. 
       </p>
       <p class="section-intro reveal">
-        After you log a set, Yield asks you to rate the effort from 1 to 10. That rating is what drives any adjustments for your next session. When the session ends, Yield summarizes how it went along with any personal records.
+        After you log a set, Yield asks you to rate the effort from 1 to 10. That rating is what drives any adjustments for your next session. When the session ends, Yield summarizes how it went.
       </p>
     </div>
-    <div class="phone-wrap reveal">
+    <div class="phone-wrap reveal" id="sessionPhone">
       <div class="phone-frame phone-frame-light">
         <div class="phone-notch"></div>
-        <div class="phone-toolbar">
-          <div class="ph-back">&#x2039;</div>
-          <div class="ph-keyboard">
-            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.9414 15.4395">
-              <g>
-                <rect height="15.4395" opacity="0" width="24.9414" x="0" y="0"/>
-                <path d="M3.06641 15.4297L21.5137 15.4297C23.5449 15.4297 24.5801 14.4141 24.5801 12.4023L24.5801 3.01758C24.5801 1.01562 23.5449 0 21.5137 0L3.06641 0C1.01562 0 0 1.00586 0 3.01758L0 12.4023C0 14.4141 1.01562 15.4297 3.06641 15.4297ZM3.08594 13.8574C2.10938 13.8574 1.57227 13.3301 1.57227 12.3145L1.57227 3.10547C1.57227 2.08984 2.10938 1.57227 3.08594 1.57227L21.4844 1.57227C22.4512 1.57227 23.0078 2.08984 23.0078 3.10547L23.0078 12.3145C23.0078 13.3301 22.4512 13.8574 21.4844 13.8574ZM3.96484 5.43945L4.86328 5.43945C5.13672 5.43945 5.30273 5.27344 5.30273 5.00977L5.30273 4.11133C5.30273 3.83789 5.13672 3.67188 4.86328 3.67188L3.96484 3.67188C3.70117 3.67188 3.53516 3.83789 3.53516 4.11133L3.53516 5.00977C3.53516 5.27344 3.70117 5.43945 3.96484 5.43945ZM7.10938 5.43945L8.00781 5.43945C8.27148 5.43945 8.4375 5.27344 8.4375 5.00977L8.4375 4.11133C8.4375 3.83789 8.27148 3.67188 8.00781 3.67188L7.10938 3.67188C6.83594 3.67188 6.66992 3.83789 6.66992 4.11133L6.66992 5.00977C6.66992 5.27344 6.83594 5.43945 7.10938 5.43945ZM10.2539 5.43945L11.1426 5.43945C11.416 5.43945 11.582 5.27344 11.582 5.00977L11.582 4.11133C11.582 3.83789 11.416 3.67188 11.1426 3.67188L10.2539 3.67188C9.98047 3.67188 9.81445 3.83789 9.81445 4.11133L9.81445 5.00977C9.81445 5.27344 9.98047 5.43945 10.2539 5.43945ZM13.3887 5.43945L14.2871 5.43945C14.5605 5.43945 14.7266 5.27344 14.7266 5.00977L14.7266 4.11133C14.7266 3.83789 14.5605 3.67188 14.2871 3.67188L13.3887 3.67188C13.125 3.67188 12.959 3.83789 12.959 4.11133L12.959 5.00977C12.959 5.27344 13.125 5.43945 13.3887 5.43945ZM16.5332 5.43945L17.4316 5.43945C17.6953 5.43945 17.8613 5.27344 17.8613 5.00977L17.8613 4.11133C17.8613 3.83789 17.6953 3.67188 17.4316 3.67188L16.5332 3.67188C16.2598 3.67188 16.0938 3.83789 16.0938 4.11133L16.0938 5.00977C16.0938 5.27344 16.2598 5.43945 16.5332 5.43945ZM19.6777 5.43945L20.5664 5.43945C20.8398 5.43945 21.0059 5.27344 21.0059 5.00977L21.0059 4.11133C21.0059 3.83789 20.8398 3.67188 20.5664 3.67188L19.6777 3.67188C19.4043 3.67188 19.2383 3.83789 19.2383 4.11133L19.2383 5.00977C19.2383 5.27344 19.4043 5.43945 19.6777 5.43945ZM3.96484 8.58398L4.86328 8.58398C5.13672 8.58398 5.30273 8.41797 5.30273 8.14453L5.30273 7.25586C5.30273 6.98242 5.13672 6.81641 4.86328 6.81641L3.96484 6.81641C3.70117 6.81641 3.53516 6.98242 3.53516 7.25586L3.53516 8.14453C3.53516 8.41797 3.70117 8.58398 3.96484 8.58398ZM7.10938 8.58398L8.00781 8.58398C8.27148 8.58398 8.4375 8.41797 8.4375 8.14453L8.4375 7.25586C8.4375 6.98242 8.27148 6.81641 8.00781 6.81641L7.10938 6.81641C6.83594 6.81641 6.66992 6.98242 6.66992 7.25586L6.66992 8.14453C6.66992 8.41797 6.83594 8.58398 7.10938 8.58398ZM10.2539 8.58398L11.1426 8.58398C11.416 8.58398 11.582 8.41797 11.582 8.14453L11.582 7.25586C11.582 6.98242 11.416 6.81641 11.1426 6.81641L10.2539 6.81641C9.98047 6.81641 9.81445 6.98242 9.81445 7.25586L9.81445 8.14453C9.81445 8.41797 9.98047 8.58398 10.2539 8.58398ZM13.3887 8.58398L14.2871 8.58398C14.5605 8.58398 14.7266 8.41797 14.7266 8.14453L14.7266 7.25586C14.7266 6.98242 14.5605 6.81641 14.2871 6.81641L13.3887 6.81641C13.125 6.81641 12.959 6.98242 12.959 7.25586L12.959 8.14453C12.959 8.41797 13.125 8.58398 13.3887 8.58398ZM16.5332 8.58398L17.4316 8.58398C17.6953 8.58398 17.8613 8.41797 17.8613 8.14453L17.8613 7.25586C17.8613 6.98242 17.6953 6.81641 17.4316 6.81641L16.5332 6.81641C16.2598 6.81641 16.0938 6.98242 16.0938 7.25586L16.0938 8.14453C16.0938 8.41797 16.2598 8.58398 16.5332 8.58398ZM19.6777 8.58398L20.5664 8.58398C20.8398 8.58398 21.0059 8.41797 21.0059 8.14453L21.0059 7.25586C21.0059 6.98242 20.8398 6.81641 20.5664 6.81641L19.6777 6.81641C19.4043 6.81641 19.2383 6.98242 19.2383 7.25586L19.2383 8.14453C19.2383 8.41797 19.4043 8.58398 19.6777 8.58398ZM3.96484 11.7285L4.86328 11.7285C5.13672 11.7285 5.30273 11.5625 5.30273 11.2891L5.30273 10.3906C5.30273 10.127 5.13672 9.96094 4.86328 9.96094L3.96484 9.96094C3.70117 9.96094 3.53516 10.127 3.53516 10.3906L3.53516 11.2891C3.53516 11.5625 3.70117 11.7285 3.96484 11.7285ZM7.20703 11.7285L17.334 11.7285C17.666 11.7285 17.8613 11.5332 17.8613 11.1914L17.8613 10.4883C17.8613 10.1562 17.666 9.96094 17.334 9.96094L7.20703 9.96094C6.86523 9.96094 6.66992 10.1562 6.66992 10.4883L6.66992 11.1914C6.66992 11.5332 6.86523 11.7285 7.20703 11.7285ZM19.6777 11.7285L20.5664 11.7285C20.8398 11.7285 21.0059 11.5625 21.0059 11.2891L21.0059 10.3906C21.0059 10.127 20.8398 9.96094 20.5664 9.96094L19.6777 9.96094C19.4043 9.96094 19.2383 10.127 19.2383 10.3906L19.2383 11.2891C19.2383 11.5625 19.4043 11.7285 19.6777 11.7285Z" fill="currentColor" fill-opacity="0.99"/>
-              </g>
-            </svg>
-          </div>
-        </div>
-        <div class="phone-content">
-          <div class="pmv-counter">MOVEMENT 4 OF 6</div>
-          <div class="pmv-name">Lat Pulldown</div>
-          <div class="pmv-cue">Shoulderblades down first, then pull with arms. Keep chest up. Then pause at bottom.</div>
+        <div class="phone-view-wrapper" id="sessionScroller">
+          <div class="phone-view">
+            <div class="phone-toolbar">
+              <div class="ph-back">&#x2039;</div>
+              <div class="ph-keyboard">
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.9414 15.4395">
+                  <g>
+                    <rect height="15.4395" opacity="0" width="24.9414" x="0" y="0"/>
+                    <path d="M3.06641 15.4297L21.5137 15.4297C23.5449 15.4297 24.5801 14.4141 24.5801 12.4023L24.5801 3.01758C24.5801 1.01562 23.5449 0 21.5137 0L3.06641 0C1.01562 0 0 1.00586 0 3.01758L0 12.4023C0 14.4141 1.01562 15.4297 3.06641 15.4297ZM3.08594 13.8574C2.10938 13.8574 1.57227 13.3301 1.57227 12.3145L1.57227 3.10547C1.57227 2.08984 2.10938 1.57227 3.08594 1.57227L21.4844 1.57227C22.4512 1.57227 23.0078 2.08984 23.0078 3.10547L23.0078 12.3145C23.0078 13.3301 22.4512 13.8574 21.4844 13.8574ZM3.96484 5.43945L4.86328 5.43945C5.13672 5.43945 5.30273 5.27344 5.30273 5.00977L5.30273 4.11133C5.30273 3.83789 5.13672 3.67188 4.86328 3.67188L3.96484 3.67188C3.70117 3.67188 3.53516 3.83789 3.53516 4.11133L3.53516 5.00977C3.53516 5.27344 3.70117 5.43945 3.96484 5.43945ZM7.10938 5.43945L8.00781 5.43945C8.27148 5.43945 8.4375 5.27344 8.4375 5.00977L8.4375 4.11133C8.4375 3.83789 8.27148 3.67188 8.00781 3.67188L7.10938 3.67188C6.83594 3.67188 6.66992 3.83789 6.66992 4.11133L6.66992 5.00977C6.66992 5.27344 6.83594 5.43945 7.10938 5.43945ZM10.2539 5.43945L11.1426 5.43945C11.416 5.43945 11.582 5.27344 11.582 5.00977L11.582 4.11133C11.582 3.83789 11.416 3.67188 11.1426 3.67188L10.2539 3.67188C9.98047 3.67188 9.81445 3.83789 9.81445 4.11133L9.81445 5.00977C9.81445 5.27344 9.98047 5.43945 10.2539 5.43945ZM13.3887 5.43945L14.2871 5.43945C14.5605 5.43945 14.7266 5.27344 14.7266 5.00977L14.7266 4.11133C14.7266 3.83789 14.5605 3.67188 14.2871 3.67188L13.3887 3.67188C13.125 3.67188 12.959 3.83789 12.959 4.11133L12.959 5.00977C12.959 5.27344 13.125 5.43945 13.3887 5.43945ZM16.5332 5.43945L17.4316 5.43945C17.6953 5.43945 17.8613 5.27344 17.8613 5.00977L17.8613 4.11133C17.8613 3.83789 17.6953 3.67188 17.4316 3.67188L16.5332 3.67188C16.2598 3.67188 16.0938 3.83789 16.0938 4.11133L16.0938 5.00977C16.0938 5.27344 16.2598 5.43945 16.5332 5.43945ZM19.6777 5.43945L20.5664 5.43945C20.8398 5.43945 21.0059 5.27344 21.0059 5.00977L21.0059 4.11133C21.0059 3.83789 20.8398 3.67188 20.5664 3.67188L19.6777 3.67188C19.4043 3.67188 19.2383 3.83789 19.2383 4.11133L19.2383 5.00977C19.2383 5.27344 19.4043 5.43945 19.6777 5.43945ZM3.96484 8.58398L4.86328 8.58398C5.13672 8.58398 5.30273 8.41797 5.30273 8.14453L5.30273 7.25586C5.30273 6.98242 5.13672 6.81641 4.86328 6.81641L3.96484 6.81641C3.70117 6.81641 3.53516 6.98242 3.53516 7.25586L3.53516 8.14453C3.53516 8.41797 3.70117 8.58398 3.96484 8.58398ZM7.10938 8.58398L8.00781 8.58398C8.27148 8.58398 8.4375 8.41797 8.4375 8.14453L8.4375 7.25586C8.4375 6.98242 8.27148 6.81641 8.00781 6.81641L7.10938 6.81641C6.83594 6.81641 6.66992 6.98242 6.66992 7.25586L6.66992 8.14453C6.66992 8.41797 6.83594 8.58398 7.10938 8.58398ZM10.2539 8.58398L11.1426 8.58398C11.416 8.58398 11.582 8.41797 11.582 8.14453L11.582 7.25586C11.582 6.98242 11.416 6.81641 11.1426 6.81641L10.2539 6.81641C9.98047 6.81641 9.81445 6.98242 9.81445 7.25586L9.81445 8.14453C9.81445 8.41797 9.98047 8.58398 10.2539 8.58398ZM13.3887 8.58398L14.2871 8.58398C14.5605 8.58398 14.7266 8.41797 14.7266 8.14453L14.7266 7.25586C14.7266 6.98242 14.5605 6.81641 14.2871 6.81641L13.3887 6.81641C13.125 6.81641 12.959 6.98242 12.959 7.25586L12.959 8.14453C12.959 8.41797 13.125 8.58398 13.3887 8.58398ZM16.5332 8.58398L17.4316 8.58398C17.6953 8.58398 17.8613 8.41797 17.8613 8.14453L17.8613 7.25586C17.8613 6.98242 17.6953 6.81641 17.4316 6.81641L16.5332 6.81641C16.2598 6.81641 16.0938 6.98242 16.0938 7.25586L16.0938 8.14453C16.0938 8.41797 16.2598 8.58398 16.5332 8.58398ZM19.6777 8.58398L20.5664 8.58398C20.8398 8.58398 21.0059 8.41797 21.0059 8.14453L21.0059 7.25586C21.0059 6.98242 20.8398 6.81641 20.5664 6.81641L19.6777 6.81641C19.4043 6.81641 19.2383 6.98242 19.2383 7.25586L19.2383 8.14453C19.2383 8.41797 19.4043 8.58398 19.6777 8.58398ZM3.96484 11.7285L4.86328 11.7285C5.13672 11.7285 5.30273 11.5625 5.30273 11.2891L5.30273 10.3906C5.30273 10.127 5.13672 9.96094 4.86328 9.96094L3.96484 9.96094C3.70117 9.96094 3.53516 10.127 3.53516 10.3906L3.53516 11.2891C3.53516 11.5625 3.70117 11.7285 3.96484 11.7285ZM7.20703 11.7285L17.334 11.7285C17.666 11.7285 17.8613 11.5332 17.8613 11.1914L17.8613 10.4883C17.8613 10.1562 17.666 9.96094 17.334 9.96094L7.20703 9.96094C6.86523 9.96094 6.66992 10.1562 6.66992 10.4883L6.66992 11.1914C6.66992 11.5332 6.86523 11.7285 7.20703 11.7285ZM19.6777 11.7285L20.5664 11.7285C20.8398 11.7285 21.0059 11.5625 21.0059 11.2891L21.0059 10.3906C21.0059 10.127 20.8398 9.96094 20.5664 9.96094L19.6777 9.96094C19.4043 9.96094 19.2383 10.127 19.2383 10.3906L19.2383 11.2891C19.2383 11.5625 19.4043 11.7285 19.6777 11.7285Z" fill="currentColor" fill-opacity="0.99"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
+            <div class="phone-content">
+              <div class="pmv-counter">MOVEMENT 4 OF 6</div>
+              <div class="pmv-name">Lat Pulldown</div>
+              <div class="pmv-cue">Shoulderblades down first, then pull with arms. Keep chest up. Then pause at bottom.</div>
 
-          <div class="pmv-image-card">
-            <!-- Replace src with your exercise image URL or base64 data URI -->
-            <img
-              src="./lat-pull-down.png"
-              alt="Romanian Deadlift"
-              class="pmv-exercise-img"
-              id="pmvExerciseImg"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
-            <div class="pmv-img-placeholder">
-              <span class="pmv-img-placeholder-label">Exercise image</span>
+              <div class="pmv-image-card">
+                <!-- Replace src with your exercise image URL or base64 data URI -->
+                <img
+                  src="./lat-pull-down.png"
+                  alt="Romanian Deadlift"
+                  class="pmv-exercise-img"
+                  id="pmvExerciseImg"
+                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                />
+                <div class="pmv-img-placeholder">
+                  <span class="pmv-img-placeholder-label">Exercise image</span>
+                </div>
+              </div>
+            </div>
+            <div class="pmv-log-card" id="sessionLogCard">
+              <div class="pmv-log-label">SET 1 OF 3</div>
+              <div class="pmv-log-reps">8 REPS</div>
+              <div class="pmv-log-weight">120 LBS</div>
             </div>
           </div>
-          <div class="pmv-dots">
-            <span class="pmv-dot pmv-dot-active"></span>
-            <span class="pmv-dot"></span>
-            <span class="pmv-dot"></span>
+          <div class="phone-view">
+            <div class="phone-toolbar">
+              <div class="ph-back" style="opacity:0">&#x2039;</div>
+              <div class="ph-toolbar-text">Skip</div>
+            </div>
+            <div class="phone-content">
+              <div class="pmv-counter">SET 2 COMPLETE</div>
+              <div class="ph-rpe-title">Perceived Exertion</div>
+              <div class="ph-rpe-grid">
+                <div class="rpe-low">1</div>
+                <div class="rpe-low">2</div>
+                <div class="rpe-low">3</div>
+                <div class="rpe-low">4</div>
+                <div class="rpe-low">5</div>
+                <div class="rpe-low">6</div>
+                <div class="rpe-mid">7</div>
+                <div class="rpe-mid">8</div>
+                <div class="rpe-high">9</div>
+                <div class="rpe-high">10</div>
+              </div>
+            </div>
           </div>
-        </div>
-        <div class="pmv-log-card">
-          <div class="pmv-log-label">TAP TO LOG</div>
-          <div class="pmv-log-reps">8 REPS</div>
-          <div class="pmv-log-weight">120 LBS</div>
         </div>
       </div>
     </div>
@@ -1518,8 +1644,8 @@
     </div>
     <div class="phone-wrap reveal" id="chatWindow">
       <div class="phone-frame phone-frame-light">
-        <div>
-          <div class="phone-notch"></div>
+        <div class="phone-notch"></div>
+        <div class="phone-view">
           <div class="phone-toolbar">
             <div class="ph-back">&#x2039;</div>
             <div class="ph-title">
@@ -1535,44 +1661,44 @@
             </div>
             <div class="ph-back" style="opacity:0">&#x2039;</div>
           </div>
-        </div>
-        <div class="ph-messages" id="pchMessages">
-          <div class="ph-yield-msg" id="pchY1">
-            <div class="ph-yield-border"></div>
-            <div class="ph-yield-text">You have a 6-Week Enhancement protocol targeting April 16th. You're 3 sessions in with 25 remaining. What would you like to change?</div>
-          </div>
-
-          <div class="ph-user-msg" id="pchU1">
-            <div class="ph-user-bubble">I'm recovering from being sick. Can you reduce the time for my planks and treadmill tomorrow?</div>
-          </div>
-
-          <div class="ph-analyzing-wrap">
-            <div class="ph-analyzing" id="pchA1">
-              <span class="ph-icon ph-spin">
-                <svg viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">                                           
-                    <circle cx="6" cy="6" r="5" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="20 12" opacity="0.85">               
-                      <animateTransform attributeName="transform" type="rotate" from="0 6 6" to="360 6 6" dur="0.75s" repeatCount="indefinite"/>                           
-                    </circle>                                          
-                </svg>
-              </span>
-              <span class="ph-analyzing-label">ANALYZING</span>
+          <div class="ph-messages" id="pchMessages">
+            <div class="ph-yield-msg" id="pchY1">
+              <div class="ph-yield-border"></div>
+              <div class="ph-yield-text">You have a 6-Week Enhancement protocol targeting April 16th. You're 3 sessions in with 25 remaining. What would you like to change?</div>
             </div>
-            <div class="ph-analyzing" id="pchA2">
-              <span class="ph-icon">✓</span>
-              <span class="ph-analyzing-label">UPDATED</span>
+
+            <div class="ph-user-msg" id="pchU1">
+              <div class="ph-user-bubble">I'm recovering from being sick. Can you reduce the time for my planks and treadmill tomorrow?</div>
+            </div>
+
+            <div class="ph-analyzing-wrap">
+              <div class="ph-analyzing" id="pchA1">
+                <span class="ph-icon ph-spin">
+                  <svg viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">                                           
+                      <circle cx="6" cy="6" r="5" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="20 12" opacity="0.85">               
+                        <animateTransform attributeName="transform" type="rotate" from="0 6 6" to="360 6 6" dur="0.75s" repeatCount="indefinite"/>                           
+                      </circle>                                          
+                  </svg>
+                </span>
+                <span class="ph-analyzing-label">ANALYZING</span>
+              </div>
+              <div class="ph-analyzing" id="pchA2">
+                <span class="ph-icon">✓</span>
+                <span class="ph-analyzing-label">UPDATED</span>
+              </div>
+            </div>
+
+            <div class="ph-yield-msg" id="pchY2" style="opacity:0;">
+              <div class="ph-yield-border"></div>
+              <div class="ph-yield-text">I've reduced your plank and treadmill durations to 70% for tomorrow. Let me know if you need any other adjustments.</div>
             </div>
           </div>
-
-          <div class="ph-yield-msg" id="pchY2" style="opacity:0;">
-            <div class="ph-yield-border"></div>
-            <div class="ph-yield-text">I've reduced your plank and treadmill durations to 70% for tomorrow. Let me know if you need any other adjustments.</div>
+          <div class="ph-input-row-wrapper">
+            <div class="ph-input-row">
+              <div class="ph-input-fake">Your message</div>
+            </div>
+            <div class="ph-send">↑</div>
           </div>
-        </div>
-        <div class="ph-input-row-wrapper">
-          <div class="ph-input-row">
-            <div class="ph-input-fake">Your message</div>
-          </div>
-          <div class="ph-send">↑</div>
         </div>
       </div>
     </div>
@@ -1627,7 +1753,7 @@
   </div>
     <p class="section-tag reveal" style="text-align:center">TestFlight Beta</p>
   <h2 class="cta-headline reveal">Try it free<br /><em>while it's in beta.</em></h2>
-  <p class="cta-sub reveal">Yield is available now through TestFlight. iPhone only. No account needed to get started — just install and go.</p>
+  <p class="cta-sub reveal">Yield is available now through TestFlight. iPhone only. No account needed to get started.</p>
   <div class="reveal">
     <button class="beta-trigger" id="betaTrigger" aria-expanded="false">
       <span class="beta-trigger-label">Get Beta App</span>
@@ -1682,6 +1808,85 @@
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   reveals.forEach(el => observer.observe(el));
+
+  // Session phone animation — replays every time it scrolls into view
+  const sessionPhone = document.getElementById('sessionPhone');
+  const sessionScroller = document.getElementById('sessionScroller');
+  const sessionLogCard = document.getElementById('sessionLogCard');
+  if (sessionPhone && sessionScroller && sessionLogCard) {
+    let sessionTimers = [];
+    let sessionRaf = null;
+
+    // Create touch dot
+    const touchDot = document.createElement('div');
+    touchDot.className = 'touch-dot';
+    sessionLogCard.style.position = 'relative';
+    sessionLogCard.appendChild(touchDot);
+
+    // Smooth scroll with iOS-like duration (0.35s) and ease-out curve
+    const smoothScrollTo = (el, target, duration) => {
+      const start = el.scrollLeft;
+      const distance = target - start;
+      const startTime = performance.now();
+      const ease = (t) => 1 - Math.pow(1 - t, 3); // cubic ease-out
+      const step = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        el.scrollLeft = start + distance * ease(progress);
+        if (progress < 1) sessionRaf = requestAnimationFrame(step);
+      };
+      sessionRaf = requestAnimationFrame(step);
+    };
+
+    const resetSession = () => {
+      sessionTimers.forEach(t => clearTimeout(t));
+      sessionTimers = [];
+      if (sessionRaf) { cancelAnimationFrame(sessionRaf); sessionRaf = null; }
+      touchDot.className = 'touch-dot';
+      sessionScroller.scrollLeft = 0;
+    };
+
+    const playSession = () => {
+      // Position dot at center of the log card
+      const cardRect = sessionLogCard.getBoundingClientRect();
+      touchDot.style.left = (sessionLogCard.offsetWidth / 4) + 'px';
+      touchDot.style.top = (sessionLogCard.offsetHeight / 2) + 'px';
+
+      // After 2.3s, show the touch dot (scales up to get attention)
+      sessionTimers.push(setTimeout(() => {
+        touchDot.className = 'touch-dot visible';
+      }, 2300));
+
+      // After 3.4s, press down (scales smaller)
+      sessionTimers.push(setTimeout(() => {
+        touchDot.className = 'touch-dot pressed';
+      }, 3400));
+
+      // After 4.1s, lift the dot and scroll to second screen
+      sessionTimers.push(setTimeout(() => {
+        touchDot.className = 'touch-dot lift';
+        smoothScrollTo(sessionScroller, sessionScroller.scrollWidth, 450);
+      }, 4100));
+    };
+
+    // Initial state
+    resetSession();
+
+    let sessionVisible = false;
+    const sessionObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !sessionVisible) {
+          sessionVisible = true;
+          resetSession();
+          setTimeout(playSession, 60);
+        } else if (!entry.isIntersecting && sessionVisible) {
+          sessionVisible = false;
+          resetSession();
+        }
+      });
+    }, { threshold: 0.3 });
+    sessionObs.observe(sessionPhone);
+  }
 
   // Chat mockup animation — replays every time it scrolls into view
   const chatWindow = document.getElementById('chatWindow');
