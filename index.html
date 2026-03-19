@@ -355,6 +355,9 @@
       max-width: 640px;
       margin-bottom: 32px;
     }
+    .section-header.single {
+      max-width: 900px;
+    }
     .section-header em {
       font-style: italic;
       color: var(--amber);
@@ -959,7 +962,7 @@
     /* ── HOW IT WORKS ────────────────────────────────────── */
     .steps-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 0;
       /*border: 1px solid var(--border);*/
     }
@@ -1014,6 +1017,7 @@
       gap: 1px;
       background: var(--border);
       border: 1px solid var(--border);
+      margin-top: 48px;
     }
     .philosophy-cell {
       background: var(--bg);
@@ -1275,7 +1279,7 @@
       transition: all 0.2s;
       display: inline-block;
       padding: 2px 8px;
-      margin: 0px 1px;
+      margin: 0px 2px;
       border-radius: 4px;
       text-decoration: none;
       font-size: 13px;
@@ -1413,10 +1417,6 @@
     :root.light .hero-scroll-hint { font-weight: 400; }
 
     @media (max-width: 1023px) {
-      .step-cell { padding: 16px; }
-      .step-cell:nth-child(odd) { padding-left: 0px; }
-      .steps-grid { grid-template-columns: repeat(2, 1fr); }
-      .step-connector { display: none; }
       .philosophy-grid { grid-template-columns: repeat(2, 1fr); }
     }
     
@@ -1427,6 +1427,8 @@
       section { padding: 80px 24px; }
       .features-layout { grid-template-columns: 1fr; gap: 30px; }
       .session-section { grid-template-columns: 1fr; gap: 30px; }
+      .section-header.single { max-width: none; }
+      .section-header.single em { display: block; }
       .chat-section { grid-template-columns: 1fr; gap: 30px; }
       .philosophy-grid { grid-template-columns: 1fr; }
       .steps-grid { grid-template-columns: 1fr; }
@@ -1488,7 +1490,7 @@
 <!-- HOW IT WORKS -->
 <section id="how-it-works">
   <p class="section-tag reveal">How it works</p>
-  <h2 class="section-header reveal">Built to make <em>training simple.</em></h2>
+  <h2 class="section-header single reveal">Built to make <em>training simple.</em></h2>
 
   <div class="steps-grid reveal">
     <div class="step-cell">
@@ -1499,18 +1501,12 @@
     </div>
     <div class="step-cell">
       <span class="step-num">02</span>
-      <div class="step-title">One thing at a time</div>
-      <div class="step-body">When you're at the gym, Yield shows you exactly what to do next. You do the set, log it, and move on. There's nothing to figure out.</div>
+      <div class="step-title">Follow along</div>
+      <div class="step-body">When you're at the gym, Yield shows you exactly what to do. You can ask questions any time and even get a reference image when an explanation isn't enough.</div>
       <div class="step-connector"></div>
     </div>
     <div class="step-cell">
       <span class="step-num">03</span>
-      <div class="step-title">Ask anything, mid-session</div>
-      <div class="step-body">During an exercise, you can ask Yield questions. It can explain a movement, offer a modification, or pull up a reference image when a description isn't enough.</div>
-      <div class="step-connector"></div>
-    </div>
-    <div class="step-cell">
-      <span class="step-num">04</span>
       <div class="step-title">The program refines itself</div>
       <div class="step-body">Between sessions, Yield looks at how you rated each exercise and anything you noted. It uses that to make small adjustments to weight, volume, and pacing.</div>
     </div>
@@ -1655,10 +1651,10 @@
       <p class="section-tag reveal">In the gym and out</p>
       <h2 class="section-header reveal">You can message Yield <em>whenever you need to.</em></h2>
       <p class="section-intro reveal">
-        While at the gym, you can ask Yield something and it'll know exactly which movement you're on, what you've logged, and how your effort's been tracking.
+        While at the gym, you can ask Yield something, and it'll know exactly which movement you're on, what you've logged, and how your effort's been tracking.
       </p>
       <p class="section-intro reveal">
-        Outside the gym, just send a message. Yield adjusts based on what you tell it.
+        Outside the gym, just send a message. Yield will make changes based on what you tell it.
       </p>
     </div>
     <div class="phone-wrap reveal" id="chatWindow">
@@ -1727,8 +1723,9 @@
 <!-- PHILOSOPHY -->
 <section id="philosophy" >
   <p class="section-tag reveal">Philosophy</p>
-  <h2 class="section-header single reveal">Why it's built <em>the way it is.</em></h2>
-  <p class="section-intro reveal" style="margin-bottom: 36px;">Yield is built to ease your mind so you focus on your session.</p>
+  <!--<h2 class="section-header single reveal">Why it's built <em>the way it is.</em></h2>-->
+  <h2 class="section-header single reveal">Built to ease your mind <em>so you can focus.</em></h2>
+  <!--<p class="section-intro reveal" style="margin-bottom: 36px;">Yield is built to ease your mind so you focus on your session.</p>-->
 
   <div class="philosophy-grid reveal">
     <div class="philosophy-cell">
@@ -1771,7 +1768,7 @@
   </div>
     <p class="section-tag reveal" style="text-align:center">TestFlight Beta</p>
   <h2 class="cta-headline reveal">Try it free<br /><em>while it's in beta.</em></h2>
-  <p class="cta-sub reveal">Yield is available on iPhone through Apple's TestFlight beta program. No account required.</p>
+  <p class="cta-sub reveal">Available on iPhone through Apple's TestFlight beta program. No account required.</p>
   <div class="reveal">
     <button class="beta-trigger" id="betaTrigger" aria-expanded="false">
       <span class="beta-trigger-label">Install App</span>
@@ -1788,7 +1785,7 @@
         <div class="beta-step">
           <span class="beta-step-num">02</span>
           <div class="beta-step-body">
-            Return here to <a href="https://testflight.apple.com/join/FRgF9wpH" target="_blank" rel="noopener">Install Yield</a>
+            Come back here to <a href="https://testflight.apple.com/join/FRgF9wpH" target="_blank" rel="noopener">Install Yield</a>
           </div>
         </div>
       </div>
