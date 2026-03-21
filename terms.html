@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Use — Yield</title>
+  <meta name="description" content="Terms of Use for the Yield training app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #131310;
+      --surface: #161410;
+      --surface-raised: #1c1a16;
+      --shaded: rgba(0,0,0,0.5);
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(212,172,100,0.3);
+      --text: #e8e2d6;
+      --text-dim: #b9b4aa;
+      --text-muted: rgba(232,226,214,0.5);
+      --btn-primary-label: #0e0d0b;
+      --btn-primary-background: #d4a958;
+      --btn-primary-background-hover: #fccf7a;
+      --amber-light: #b68e44;
+      --amber: #d4ac64;
+      --amber-dark: #916c20;
+      --amber-dim: rgba(212,172,100,0.15);
+      --amber-subtle: rgb(33,30,23);
+      --nav-bg-scrolled: rgba(14,13,11,0.92);
+      --nav-bg-top: rgba(14,13,11,0.95);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --mono: 'DM Mono', 'Courier New', monospace;
+      --sans: 'IBM Plex Sans', system-ui, sans-serif;
+    }
+
+    :root.light {
+      --bg: #F4F1EA;
+      --surface: #ede9e0;
+      --surface-raised: #e4dfd3;
+      --border: rgba(0,0,0,0.09);
+      --border-accent: rgba(160,110,30,0.28);
+      --text: #1a1810;
+      --text-dim: #36332b;
+      --text-muted: rgba(26,24,16,0.5);
+      --amber-light: #eac994;
+      --amber: #a06e1e;
+      --amber-dark: #7a5214;
+      --amber-dim: rgba(160,110,30,0.12);
+      --amber-subtle: rgb(227, 220, 207);
+      --nav-bg-scrolled: rgba(245,242,236,0.92);
+      --nav-bg-top: rgba(245,242,236,0.95);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, var(--nav-bg-top), transparent);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+    }
+    nav.scrolled {
+      background: var(--nav-bg-scrolled);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 17px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+    .nav-back {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--amber); }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 2px;
+      transition: color 0.2s;
+      line-height: 1;
+    }
+    .theme-toggle:hover { color: var(--amber); }
+
+    /* ── PAGE HEADER ─────────────────────────────────────── */
+    .page-header {
+      padding: 140px 48px 64px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .page-header-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+    }
+    .page-header-inner {
+      position: relative;
+      max-width: 720px;
+    }
+    .page-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--amber);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .page-meta {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── CONTENT LAYOUT ──────────────────────────────────── */
+    .content-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+      align-items: start;
+    }
+
+    /* ── TOC SIDEBAR ─────────────────────────────────────── */
+    .toc {
+      position: sticky;
+      top: 96px;
+      padding: 64px 40px 40px 0;
+      border-right: 1px solid var(--border);
+    }
+    .toc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-list a {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      padding: 4px 0;
+      display: block;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--amber); }
+    .toc-list a.active { color: var(--amber); }
+
+    /* ── LEGAL CONTENT ───────────────────────────────────── */
+    .legal-content {
+      padding: 64px 0 40px 56px;
+    }
+
+    .legal-section {
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .legal-section-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .legal-section h2 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .legal-section h3 {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 32px 0 12px;
+    }
+
+    .legal-section p {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      text-wrap: pretty;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+
+    .legal-section ul {
+      list-style: none;
+      margin: 12px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .legal-section ul li {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding-left: 20px;
+      position: relative;
+    }
+    .legal-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--amber-dark);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .legal-callout {
+      background: var(--amber-subtle);
+      border: 1px solid var(--border-accent);
+      border-left: 2px solid var(--amber);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 2px;
+    }
+    .legal-callout p {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+    .legal-callout strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .legal-caps {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── DATA TABLE ──────────────────────────────────────── */
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .legal-table th {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .legal-table td {
+      padding: 14px 16px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .legal-table tr:last-child td { border-bottom: none; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--text-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amber); }
+    .footer-links a.active { color: var(--amber); }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .page-header { padding: 120px 24px 48px; }
+      .content-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 24px 80px;
+      }
+      .toc {
+        display: none;
+      }
+      .legal-content {
+        padding: 40px 0;
+      }
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="./index.html" class="nav-logo">YIELD</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <svg width="16px" height="16px" viewBox="0 0 253 253" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M134.88 0H118.02V44.3699H134.88V0Z" fill="currentColor"/>
+      <path d="M134.88 208.53H118.02V252.9H134.88V208.53Z" fill="currentColor"/>
+      <path d="M44.3699 118.02H0V134.88H44.3699V118.02Z" fill="currentColor"/>
+      <path d="M252.9 118.02H208.53V134.88H252.9V118.02Z" fill="currentColor"/>
+      <path d="M209.901 31.0758L165.756 75.2209C154.522 66.5661 140.863 61.82 126.45 61.82C90.8136 61.82 61.82 90.8136 61.82 126.45C61.82 140.865 66.5661 154.525 75.2209 165.759L31.0758 209.901L42.9958 221.821L221.821 42.9958L209.901 31.0758Z" fill="currentColor"/>
+      <path d="M42.9946 31.0873L31.0729 43.009L62.4468 74.3829L74.3685 62.4612L42.9946 31.0873Z" fill="currentColor"/>
+      <path d="M190.45 178.516L178.528 190.438L209.902 221.812L221.824 209.89L190.45 178.516Z" fill="currentColor"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <p class="page-tag">Legal</p>
+    <h1 class="page-title">Terms of Use</h1>
+    <p class="page-meta">Effective Date: March 20, 2026 &nbsp;·&nbsp; Last Updated: March 20, 2026 &nbsp;·&nbsp; Published by Gary Windels, independent developer</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc">
+    <p class="toc-label">Contents</p>
+    <ul class="toc-list">
+      <li><a href="#acceptance">1. Acceptance</a></li>
+      <li><a href="#description">2. Description</a></li>
+      <li><a href="#ai-disclaimer">3. AI Content</a></li>
+      <li><a href="#health-disclaimer">4. Health & Fitness</a></li>
+      <li><a href="#conduct">5. User Conduct</a></li>
+      <li><a href="#ip">6. Intellectual Property</a></li>
+      <li><a href="#third-party">7. Third-Party Services</a></li>
+      <li><a href="#privacy">8. Data & Privacy</a></li>
+      <li><a href="#warranties">9. Warranties</a></li>
+      <li><a href="#liability">10. Liability</a></li>
+      <li><a href="#indemnification">11. Indemnification</a></li>
+      <li><a href="#changes">12. Changes</a></li>
+      <li><a href="#termination">13. Termination</a></li>
+      <li><a href="#governing-law">14. Governing Law</a></li>
+      <li><a href="#severability">15. Severability</a></li>
+      <li><a href="#entire-agreement">16. Entire Agreement</a></li>
+      <li><a href="#contact">17. Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- LEGAL BODY -->
+  <main class="legal-content">
+
+    <div class="legal-section" id="acceptance">
+      <p class="legal-section-num">01</p>
+      <h2>Acceptance of Terms</h2>
+      <p>These Terms of Use govern your access to and use of the Yield mobile application, developed and operated by Entrain Apps. By downloading, installing, or using the App, you agree to be bound by these Terms. If you do not agree, do not use the App.</p>
+      <p>By accessing or using Yield, you confirm that you are at least 18 years old and that you have read, understood, and agree to be bound by these Terms. If you are using the App on behalf of an organization, you represent that you have the authority to bind that organization to these Terms.</p>
+    </div>
+
+    <div class="legal-section" id="description">
+      <p class="legal-section-num">02</p>
+      <h2>Description of the Service</h2>
+      <p>Yield is a workout planning and tracking application that allows users to create training protocols, log exercises, and track progress. The App includes AI-powered features that generate training protocols and provide in-workout guidance.</p>
+    </div>
+
+    <div class="legal-section" id="ai-disclaimer">
+      <p class="legal-section-num">03</p>
+      <h2>AI-Generated Content Disclaimer</h2>
+      <p>Yield uses artificial intelligence provided by Anthropic's Claude API to generate training protocols, exercise recommendations, coaching cues, and other workout-related content. You acknowledge and agree that:</p>
+      <ul>
+        <li><strong>AI-Generated Content is not medical advice.</strong> Training protocols, exercise suggestions, and coaching cues are generated by an AI model and are not reviewed, verified, or endorsed by certified personal trainers, physicians, physical therapists, or any other licensed health or fitness professionals.</li>
+        <li><strong>AI-Generated Content may contain errors.</strong> AI models can produce inaccurate, incomplete, or inappropriate recommendations. Exercise descriptions, rep schemes, weight suggestions, and coaching cues may not be suitable for your individual fitness level, physical condition, or goals.</li>
+        <li><strong>You are solely responsible for evaluating AI-Generated Content</strong> before following any recommendation. You should apply your own judgment and, when in doubt, consult a qualified professional.</li>
+        <li><strong>We make no warranties</strong> regarding the accuracy, safety, completeness, or suitability of any AI-Generated Content for any particular purpose.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="health-disclaimer">
+      <p class="legal-section-num">04</p>
+      <h2>Health and Fitness Disclaimer</h2>
+      <div class="legal-callout">
+        <p><strong>Consult your physician before beginning any exercise program.</strong> Yield is a planning and tracking tool, not a substitute for professional medical or fitness guidance.</p>
+      </div>
+      <p>You acknowledge and agree that:</p>
+      <ul>
+        <li>You should obtain medical clearance from a qualified healthcare provider before starting any new workout program, particularly if you have any pre-existing medical conditions, injuries, or health concerns.</li>
+        <li>Physical exercise carries inherent risks, including but not limited to musculoskeletal injury, cardiovascular events, and overtraining. <strong>You voluntarily assume all risks associated with physical exercise and use the App entirely at your own risk.</strong></li>
+        <li>You are responsible for selecting appropriate weights, exercises, and intensities for your individual capabilities. The App cannot assess your physical condition, injury history, or readiness to perform any given exercise.</li>
+        <li>You should stop exercising immediately and seek medical attention if you experience pain, dizziness, shortness of breath, or any other concerning symptoms during a workout.</li>
+        <li>We are not liable for any injury, health complication, or damage resulting from your use of the App or reliance on any content provided through the App.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="conduct">
+      <p class="legal-section-num">05</p>
+      <h2>User Conduct</h2>
+      <p>When using Yield, you agree to:</p>
+      <ul>
+        <li>Use the App only for its intended purpose of workout planning and tracking.</li>
+        <li>Not attempt to reverse-engineer, decompile, disassemble, or otherwise derive the source code of the App.</li>
+        <li>Not use the App to generate content that is unlawful, harmful, abusive, or otherwise objectionable through the AI features.</li>
+        <li>Not interfere with or disrupt the operation of the App or any servers or networks connected to the App.</li>
+        <li>Not use automated means — bots, scrapers, or similar tools — to access the App or its features.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="ip">
+      <p class="legal-section-num">06</p>
+      <h2>Intellectual Property</h2>
+      <p>All content, features, functionality, design, code, trademarks, and other intellectual property associated with Yield are owned by Entrain Apps or its licensors and are protected by applicable intellectual property laws. These Terms grant you only a limited, non-exclusive, non-transferable, revocable license to use the App for personal, non-commercial purposes.</p>
+      <p>The training protocols and workout data you create using the App remain yours. However, by using the AI features, you acknowledge that AI-Generated Content may be similar to content generated for other users, and you do not acquire exclusive rights to any AI-Generated Content.</p>
+    </div>
+
+    <div class="legal-section" id="third-party">
+      <p class="legal-section-num">07</p>
+      <h2>Third-Party Services</h2>
+      <p>Yield integrates with the following third-party services:</p>
+      <h3>Anthropic (Claude API)</h3>
+      <p>Used to power AI-driven protocol creation and in-workout guidance features. Your use of these features is subject to Anthropic's terms and policies. We are not responsible for the availability, accuracy, or practices of Anthropic's services.</p>
+      <h3>ExerciseDB</h3>
+      <p>Used to retrieve exercise reference images. Your use of these features is subject to ExerciseDB's and RapidAPI's terms and policies.</p>
+      <p>These integrations may change or become unavailable at any time without notice.</p>
+    </div>
+
+    <div class="legal-section" id="privacy">
+      <p class="legal-section-num">08</p>
+      <h2>Data and Privacy</h2>
+      <p>Your use of the App is also governed by our <a href="./privacy.html" style="color: var(--amber); text-decoration: none;">Privacy Policy</a>, which describes how we handle your data. By using the App, you agree to the practices described in the Privacy Policy.</p>
+    </div>
+
+    <div class="legal-section" id="warranties">
+      <p class="legal-section-num">09</p>
+      <h2>Disclaimer of Warranties</h2>
+      <p class="legal-caps">THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE APP WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF HARMFUL COMPONENTS.</p>
+    </div>
+
+    <div class="legal-section" id="liability">
+      <p class="legal-section-num">10</p>
+      <h2>Limitation of Liability</h2>
+      <p class="legal-caps">TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL ENTRAIN APPS, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:</p>
+      <ul>
+        <li><span class="legal-caps">PERSONAL INJURY OR PHYSICAL HARM ARISING FROM YOUR USE OF THE APP OR RELIANCE ON AI-GENERATED CONTENT;</span></li>
+        <li><span class="legal-caps">LOSS OF DATA, PROFITS, OR GOODWILL;</span></li>
+        <li><span class="legal-caps">COST OF SUBSTITUTE GOODS OR SERVICES;</span></li>
+        <li><span class="legal-caps">ANY MATTER BEYOND OUR REASONABLE CONTROL.</span></li>
+      </ul>
+      <p class="legal-caps">OUR TOTAL AGGREGATE LIABILITY TO YOU FOR ALL CLAIMS ARISING OUT OF OR RELATING TO THESE TERMS OR YOUR USE OF THE APP SHALL NOT EXCEED THE AMOUNT YOU PAID TO US, IF ANY, FOR ACCESS TO THE APP DURING THE TWELVE (12) MONTHS PRECEDING THE CLAIM.</p>
+    </div>
+
+    <div class="legal-section" id="indemnification">
+      <p class="legal-section-num">11</p>
+      <h2>Indemnification</h2>
+      <p>You agree to indemnify, defend, and hold harmless Entrain Apps and its officers, directors, employees, and agents from and against any claims, liabilities, damages, losses, and expenses (including reasonable attorneys' fees) arising out of or in any way connected with your use of the App, your violation of these Terms, or your violation of any rights of another person or entity.</p>
+    </div>
+
+    <div class="legal-section" id="changes">
+      <p class="legal-section-num">12</p>
+      <h2>Changes to These Terms</h2>
+      <p>We reserve the right to modify these Terms at any time. If we make material changes, we will update the "Last Updated" date at the top of this document and may notify you through the App. Your continued use of the App after any changes constitutes your acceptance of the updated Terms.</p>
+    </div>
+
+    <div class="legal-section" id="termination">
+      <p class="legal-section-num">13</p>
+      <h2>Termination</h2>
+      <p>We may suspend or terminate your access to the App at any time, for any reason, without notice or liability. You may stop using the App at any time. Upon termination, all provisions of these Terms that by their nature should survive will survive, including intellectual property provisions, disclaimers, limitations of liability, and indemnification.</p>
+    </div>
+
+    <div class="legal-section" id="governing-law">
+      <p class="legal-section-num">14</p>
+      <h2>Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of the State of Minnesota, without regard to its conflict of law principles. Any disputes arising under these Terms shall be resolved in the courts of Hennepin County, Minnesota.</p>
+    </div>
+
+    <div class="legal-section" id="severability">
+      <p class="legal-section-num">15</p>
+      <h2>Severability</h2>
+      <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary so that the remaining provisions remain in full force and effect.</p>
+    </div>
+
+    <div class="legal-section" id="entire-agreement">
+      <p class="legal-section-num">16</p>
+      <h2>Entire Agreement</h2>
+      <p>These Terms, together with the Privacy Policy, constitute the entire agreement between you and Entrain Apps regarding your use of the App and supersede all prior agreements and understandings, whether written or oral.</p>
+    </div>
+
+    <div class="legal-section" id="contact">
+      <p class="legal-section-num">17</p>
+      <h2>Contact</h2>
+      <p>If you have any questions about these Terms, please contact us at:</p>
+      <p>Entrain Apps<br /><a href="mailto:garywindels@gmail.com" style="color: var(--amber); text-decoration: none;">garywindels@gmail.com</a></p>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="./index.html" class="footer-logo">YIELD</a>
+  <div class="footer-links">
+    <a href="./terms.html" class="active">Terms</a>
+    <a href="./privacy.html">Privacy</a>
+  </div>
+  <span class="footer-copy">© 2026 · A precision training instrument</span>
+</footer>
+
+<script>
+  // Nav scroll behavior
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // TOC active state on scroll
+  const sections = document.querySelectorAll('.legal-section[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // Theme toggle — matches index.html pattern
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const applyTheme = (isLight) => {
+    root.classList.toggle('light', isLight);
+  };
+
+  const saved = localStorage.getItem('yield-theme');
+  if (saved) {
+    applyTheme(saved === 'light');
+  } else {
+    applyTheme(!prefersDark.matches);
+  }
+
+  prefersDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('yield-theme')) {
+      applyTheme(!e.matches);
+    }
+  });
+
+  toggle.addEventListener('click', () => {
+    const isLight = root.classList.toggle('light');
+    localStorage.setItem('yield-theme', isLight ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

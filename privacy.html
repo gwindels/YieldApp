@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Yield</title>
+  <meta name="description" content="Privacy Policy for the Yield training app." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #131310;
+      --surface: #161410;
+      --surface-raised: #1c1a16;
+      --shaded: rgba(0,0,0,0.5);
+      --border: rgba(255,255,255,0.07);
+      --border-accent: rgba(212,172,100,0.3);
+      --text: #e8e2d6;
+      --text-dim: #b9b4aa;
+      --text-muted: rgba(232,226,214,0.5);
+      --btn-primary-label: #0e0d0b;
+      --btn-primary-background: #d4a958;
+      --btn-primary-background-hover: #fccf7a;
+      --amber-light: #b68e44;
+      --amber: #d4ac64;
+      --amber-dark: #916c20;
+      --amber-dim: rgba(212,172,100,0.15);
+      --amber-subtle: rgb(33,30,23);
+      --nav-bg-scrolled: rgba(14,13,11,0.92);
+      --nav-bg-top: rgba(14,13,11,0.95);
+      --serif: 'Instrument Serif', Georgia, serif;
+      --mono: 'DM Mono', 'Courier New', monospace;
+      --sans: 'IBM Plex Sans', system-ui, sans-serif;
+    }
+
+    :root.light {
+      --bg: #F4F1EA;
+      --surface: #ede9e0;
+      --surface-raised: #e4dfd3;
+      --border: rgba(0,0,0,0.09);
+      --border-accent: rgba(160,110,30,0.28);
+      --text: #1a1810;
+      --text-dim: #36332b;
+      --text-muted: rgba(26,24,16,0.5);
+      --amber-light: #eac994;
+      --amber: #a06e1e;
+      --amber-dark: #7a5214;
+      --amber-dim: rgba(160,110,30,0.12);
+      --amber-subtle: rgb(227, 220, 207);
+      --nav-bg-scrolled: rgba(245,242,236,0.92);
+      --nav-bg-top: rgba(245,242,236,0.95);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ─────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: linear-gradient(to bottom, var(--nav-bg-top), transparent);
+      backdrop-filter: blur(0px);
+      transition: background 0.4s, backdrop-filter 0.4s, border-color 0.4s;
+    }
+    nav.scrolled {
+      background: var(--nav-bg-scrolled);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 17px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-dim);
+      padding: 6px 2px;
+      transition: color 0.2s;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+    }
+    .theme-toggle:hover { color: var(--amber); }
+
+    /* ── PAGE HEADER ─────────────────────────────────────── */
+    .page-header {
+      padding: 140px 48px 64px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .page-header-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);
+    }
+    .page-header-inner {
+      position: relative;
+      max-width: 720px;
+    }
+    .page-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--amber);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .page-title {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .page-meta {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── CONTENT LAYOUT ──────────────────────────────────── */
+    .content-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 48px 120px;
+      align-items: start;
+    }
+
+    /* ── TOC SIDEBAR ─────────────────────────────────────── */
+    .toc {
+      position: sticky;
+      top: 96px;
+      padding: 64px 40px 40px 0;
+      border-right: 1px solid var(--border);
+    }
+    .toc-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .toc-list a {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      padding: 4px 0;
+      display: block;
+      transition: color 0.2s;
+    }
+    .toc-list a:hover { color: var(--amber); }
+    .toc-list a.active { color: var(--amber); }
+
+    /* ── LEGAL CONTENT ───────────────────────────────────── */
+    .legal-content {
+      padding: 64px 0 40px 56px;
+    }
+
+    .legal-section {
+      margin-bottom: 64px;
+      padding-bottom: 64px;
+      border-bottom: 1px solid var(--border);
+    }
+    .legal-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .legal-section-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .legal-section h2 {
+      font-family: var(--serif);
+      font-size: 28px;
+      font-weight: normal;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .legal-section h3 {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin: 32px 0 12px;
+    }
+
+    .legal-section p {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--text-dim);
+      line-height: 1.8;
+      margin-bottom: 16px;
+      text-wrap: pretty;
+    }
+    .legal-section p:last-child { margin-bottom: 0; }
+
+    .legal-section ul {
+      list-style: none;
+      margin: 12px 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .legal-section ul li {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      padding-left: 20px;
+      position: relative;
+    }
+    .legal-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--amber-dark);
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .legal-callout {
+      background: var(--amber-subtle);
+      border: 1px solid var(--border-accent);
+      border-left: 2px solid var(--amber);
+      padding: 20px 24px;
+      margin: 24px 0;
+      border-radius: 2px;
+    }
+    .legal-callout p {
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 0;
+      line-height: 1.7;
+    }
+    .legal-callout strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── DATA TABLE ──────────────────────────────────────── */
+    .legal-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 14px;
+    }
+    .legal-table th {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 400;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+    .legal-table td {
+      padding: 14px 16px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .legal-table tr:last-child td { border-bottom: none; }
+    .legal-table td:first-child { color: var(--text); font-weight: 400; }
+
+    /* ── FOOTER ──────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 15px;
+      color: var(--text-dim);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amber); }
+    .footer-links a.active { color: var(--amber); }
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .page-header { padding: 120px 24px 48px; }
+      .content-wrap {
+        grid-template-columns: 1fr;
+        padding: 0 24px 80px;
+      }
+      .toc { display: none; }
+      .legal-content { padding: 40px 0; }
+      footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+      .legal-table { font-size: 13px; }
+      .legal-table th, .legal-table td { padding: 10px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="./index.html" class="nav-logo">YIELD</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <svg width="16px" height="16px" viewBox="0 0 253 253" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <path d="M134.88 0H118.02V44.3699H134.88V0Z" fill="currentColor"/>
+      <path d="M134.88 208.53H118.02V252.9H134.88V208.53Z" fill="currentColor"/>
+      <path d="M44.3699 118.02H0V134.88H44.3699V118.02Z" fill="currentColor"/>
+      <path d="M252.9 118.02H208.53V134.88H252.9V118.02Z" fill="currentColor"/>
+      <path d="M209.901 31.0758L165.756 75.2209C154.522 66.5661 140.863 61.82 126.45 61.82C90.8136 61.82 61.82 90.8136 61.82 126.45C61.82 140.865 66.5661 154.525 75.2209 165.759L31.0758 209.901L42.9958 221.821L221.821 42.9958L209.901 31.0758Z" fill="currentColor"/>
+      <path d="M42.9946 31.0873L31.0729 43.009L62.4468 74.3829L74.3685 62.4612L42.9946 31.0873Z" fill="currentColor"/>
+      <path d="M190.45 178.516L178.528 190.438L209.902 221.812L221.824 209.89L190.45 178.516Z" fill="currentColor"/>
+    </svg>
+  </button>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-grid"></div>
+  <div class="page-header-inner">
+    <p class="page-tag">Legal</p>
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Effective Date: March 20, 2026 &nbsp;·&nbsp; Last Updated: March 20, 2026 &nbsp;·&nbsp; Published by Gary Windels, independent developer</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc">
+    <p class="toc-label">Contents</p>
+    <ul class="toc-list">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#information-collected">1. Information We Collect</a></li>
+      <li><a href="#how-used">2. How Your Data Is Used</a></li>
+      <li><a href="#third-party">3. Third-Party Services</a></li>
+      <li><a href="#storage">4. Storage & Security</a></li>
+      <li><a href="#retention">5. Data Retention</a></li>
+      <li><a href="#rights">6. Your Rights & Choices</a></li>
+      <li><a href="#children">7. Children's Privacy</a></li>
+      <li><a href="#international">8. International Users</a></li>
+      <li><a href="#changes">9. Changes to This Policy</a></li>
+      <li><a href="#contact">10. Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- LEGAL BODY -->
+  <main class="legal-content">
+
+    <div class="legal-section" id="overview">
+      <h2>Our commitment to your privacy</h2>
+      <div class="legal-callout">
+        <p><strong>Yield is designed with a local-first architecture.</strong> Your workout data stays on your device. We do not collect, store, or have access to your training logs on any server we operate.</p>
+      </div>
+      <p>Entrain Apps operates the Yield mobile application. This Privacy Policy explains what information is collected, how it is used, and what choices you have when you use the App.</p>
+      <p>Two external services receive limited data in the course of normal use: Anthropic's Claude API, which processes your messages when you use AI features, and ExerciseDB, which retrieves exercise reference images by name. Neither service receives your workout history, personal identifiers, or device information beyond what is described below.</p>
+    </div>
+
+    <div class="legal-section" id="information-collected">
+      <p class="legal-section-num">01</p>
+      <h2>Information We Collect</h2>
+
+      <h3>Workout Data You Create</h3>
+      <p>When you use Yield, you create and store workout-related data locally on your device, including training protocols and session plans, exercise names, sets, reps, weights, and RPE values, session completion status and scheduling, and training objectives and progress indicators.</p>
+      <p>This data is stored entirely on your device using Apple's SwiftData framework. We do not transmit, collect, or have access to your workout data on any server.</p>
+
+      <h3>AI Conversation Data</h3>
+      <p>When you use Yield's AI-powered features — protocol creation and in-workout guidance — the App sends conversation messages to Anthropic's Claude API. This includes the text messages you type, contextual workout information relevant to the active conversation (such as your current exercise, sets, and RPE), and the AI's responses.</p>
+      <p>These messages are sent to Anthropic's servers for processing. They are not stored by us on any server we operate. Anthropic's handling of this data is governed by their Privacy Policy and API terms. As of the effective date of this policy, Anthropic does not use API inputs or outputs to train their models — however, you should review Anthropic's current policy directly, as their terms may change.</p>
+
+      <h3>What We Do Not Collect</h3>
+      <ul>
+        <li><strong>No account or login required.</strong> We do not collect names, email addresses, passwords, or any account credentials.</li>
+        <li><strong>No health data from HealthKit.</strong> Yield does not integrate with Apple HealthKit or read any health data from your device.</li>
+        <li><strong>No location data.</strong> We do not access or track your location.</li>
+        <li><strong>No device identifiers for tracking.</strong> We do not collect device IDs, advertising identifiers, or fingerprint your device.</li>
+        <li><strong>No analytics or telemetry.</strong> We do not use third-party analytics SDKs or collect usage statistics.</li>
+        <li><strong>No cookies or web tracking.</strong> The App does not use cookies or similar tracking technologies.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="how-used">
+      <p class="legal-section-num">02</p>
+      <h2>How Your Data Is Used</h2>
+      <p>We do not use your data for advertising, profiling, or any purpose other than providing the App's core functionality.</p>
+
+      <table class="legal-table">
+        <thead>
+          <tr>
+            <th>Data</th>
+            <th>Purpose</th>
+            <th>Where processed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Workout logs (exercises, sets, reps, weights, RPE)</td>
+            <td>Display training history and track progress</td>
+            <td>On your device only</td>
+          </tr>
+          <tr>
+            <td>Training protocols and sessions</td>
+            <td>Organize and schedule your workouts</td>
+            <td>On your device only</td>
+          </tr>
+          <tr>
+            <td>AI conversation messages</td>
+            <td>Generate training protocols and guidance responses</td>
+            <td>Anthropic's servers (via Claude API)</td>
+          </tr>
+          <tr>
+            <td>Exercise names (normalized)</td>
+            <td>Retrieve exercise reference images</td>
+            <td>ExerciseDB servers (via RapidAPI)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="legal-section" id="third-party">
+      <p class="legal-section-num">03</p>
+      <h2>Third-Party Services</h2>
+
+      <h3>Anthropic (Claude API)</h3>
+      <p><strong>What is sent:</strong> Conversation text during AI-assisted protocol creation and in-workout guidance sessions, including your messages and the AI's responses.</p>
+      <p><strong>What is not sent:</strong> No personal identifiers, no device information, no workout history beyond what is contextually shared in the active conversation.</p>
+      <p><strong>Purpose:</strong> To generate training protocols, exercise recommendations, and guidance responses.</p>
+      <p><strong>Data handling:</strong> Governed by <a href="https://www.anthropic.com/privacy" target="_blank" rel="noopener" style="color: var(--amber); text-decoration: none;">Anthropic's Privacy Policy</a>. As of this writing, Anthropic's API terms state that API inputs and outputs are not used to train their models. Review their current policy for the most up-to-date information.</p>
+
+      <h3>ExerciseDB (via RapidAPI)</h3>
+      <p><strong>What is sent:</strong> Normalized exercise names (e.g., "romanian deadlift") to search for matching reference images.</p>
+      <p><strong>What is not sent:</strong> No personal data, no workout history, no conversation content.</p>
+      <p><strong>Purpose:</strong> To retrieve animated exercise demonstration images for display in the App.</p>
+      <p><strong>Data handling:</strong> Governed by RapidAPI's and ExerciseDB's respective privacy policies.</p>
+
+      <h3>No Other Third-Party Services</h3>
+      <p>We do not integrate with any advertising networks, analytics providers, social media platforms, or other third-party services beyond those listed above.</p>
+    </div>
+
+    <div class="legal-section" id="storage">
+      <p class="legal-section-num">04</p>
+      <h2>Data Storage and Security</h2>
+
+      <h3>Local Storage</h3>
+      <p>All workout data, training protocols, and session logs are stored locally on your device using Apple's SwiftData framework. This data is protected by your device's built-in security features, including device encryption and passcode or biometric locks.</p>
+
+      <h3>No Cloud Storage or Sync</h3>
+      <p>We do not operate servers that store your data. We do not offer cloud backup or cross-device sync. If you delete the App or lose your device, your locally stored workout data cannot be recovered by us.</p>
+
+      <h3>Data in Transit</h3>
+      <p>When AI features are used, conversation messages are transmitted to Anthropic's API over encrypted HTTPS connections. Exercise name lookups to ExerciseDB are also transmitted over HTTPS.</p>
+    </div>
+
+    <div class="legal-section" id="retention">
+      <p class="legal-section-num">05</p>
+      <h2>Data Retention</h2>
+      <ul>
+        <li><strong>On-device data</strong> remains on your device until you delete it within the App or uninstall the App. We have no ability to access or delete your on-device data remotely.</li>
+        <li><strong>AI conversation data</strong> is sent to Anthropic for real-time processing. We do not store conversation transcripts on any server. Anthropic's retention of API data is governed by their API terms and privacy policy.</li>
+        <li><strong>ExerciseDB queries</strong> are stateless API requests. We do not log these queries.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section" id="rights">
+      <p class="legal-section-num">06</p>
+      <h2>Your Rights and Choices</h2>
+
+      <h3>Control Over Your Data</h3>
+      <p>Since your data is stored locally on your device, you have full control over it at all times. You can delete workout data through the App's interface, delete all data by uninstalling the App, or avoid AI features entirely if you do not want any data sent to Anthropic. The App's manual workout logging features function without AI.</p>
+
+      <h3>Minnesota Consumer Data Privacy Act (MCDPA)</h3>
+      <p>If you are a Minnesota resident, the Minnesota Consumer Data Privacy Act provides you with rights regarding your personal data. Because Yield stores data locally on your device and we do not maintain user accounts or store personal data on our servers, these rights are effectively exercised through your direct control of the App and your device. If you have questions related to your MCDPA rights, contact us at the address below.</p>
+
+      <h3>GDPR (European Economic Area Users)</h3>
+      <p>If you are located in the EEA, you have rights under the General Data Protection Regulation including the right to access, correct, delete, restrict processing of, and port your personal data. Because Yield stores data locally and we do not maintain user accounts or server-side personal data, these rights are exercised through your direct control of the App. The legal basis for processing data sent to Anthropic's API is your consent, provided by your active use of AI features.</p>
+
+      <h3>CCPA (California Users)</h3>
+      <p>If you are a California resident, we want to be clear: we do not sell your personal information and have no plans to do so. We do not share your personal information for cross-context behavioral advertising. Because we do not collect or store personal information on our servers, there is no personal information for us to disclose or delete on our end — data on your device is under your control.</p>
+
+      <h3>Do Not Track</h3>
+      <p>The App does not track users across third-party websites or services, so Do Not Track signals are not applicable.</p>
+    </div>
+
+    <div class="legal-section" id="children">
+      <p class="legal-section-num">07</p>
+      <h2>Children's Privacy</h2>
+      <p>Yield is not directed at children under the age of 18. We do not knowingly collect personal information from minors. Because the App does not require account creation or collect personal identifiers, we have no means to determine a user's age. If you are a parent or guardian and believe your child is using the App in a way that concerns you, please contact us.</p>
+    </div>
+
+    <div class="legal-section" id="international">
+      <p class="legal-section-num">08</p>
+      <h2>International Users</h2>
+      <p>If you use the App from outside the United States, your AI conversation data will be transmitted internationally when you use AI features, as Anthropic's servers are located in the United States. By using these features, you consent to this transfer. All data in transit is encrypted via HTTPS.</p>
+    </div>
+
+    <div class="legal-section" id="changes">
+      <p class="legal-section-num">09</p>
+      <h2>Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy from time to time. If we make material changes, we will update the "Last Updated" date at the top of this document and may notify you through the App. Your continued use of the App after any changes constitutes your acceptance of the updated Privacy Policy.</p>
+    </div>
+
+    <div class="legal-section" id="contact">
+      <p class="legal-section-num">10</p>
+      <h2>Contact</h2>
+      <p>If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us at:</p>
+      <p>Entrain Apps<br /><a href="mailto:garywindels@gmail.com" style="color: var(--amber); text-decoration: none;">garywindels@gmail.com</a></p>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <a href="./index.html" class="footer-logo">YIELD</a>
+  <div class="footer-links">
+    <a href="./terms.html">Terms</a>
+    <a href="./privacy.html" class="active">Privacy</a>
+  </div>
+  <span class="footer-copy">© 2026 · A precision training instrument</span>
+</footer>
+
+<script>
+  // Nav scroll behavior
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // TOC active state on scroll
+  const sections = document.querySelectorAll('.legal-section[id]');
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        tocLinks.forEach(a => a.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // Theme toggle — matches index.html pattern
+  const toggle = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+  const applyTheme = (isLight) => {
+    root.classList.toggle('light', isLight);
+  };
+
+  const saved = localStorage.getItem('yield-theme');
+  if (saved) {
+    applyTheme(saved === 'light');
+  } else {
+    applyTheme(!prefersDark.matches);
+  }
+
+  prefersDark.addEventListener('change', (e) => {
+    if (!localStorage.getItem('yield-theme')) {
+      applyTheme(!e.matches);
+    }
+  });
+
+  toggle.addEventListener('click', () => {
+    const isLight = root.classList.toggle('light');
+    localStorage.setItem('yield-theme', isLight ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>
