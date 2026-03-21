@@ -41,17 +41,17 @@
       --serif: 'Instrument Serif', Georgia, serif;
       --mono: 'DM Mono', 'Courier New', monospace;
       --sans: 'IBM Plex Sans', system-ui, sans-serif;
-      --ph-background: #131310;
-      --ph-background-raised: #1A1A16;
-      --ph-background-chat: #272723;
-      --ph-border: #272720;
-      --ph-border-mid: #413F35;
-      --ph-text-primary: #C8C2AE;
-      --ph-text-mid: #A69E8D;
-      --ph-text-dim: #8C8677;
-      --ph-accent: #E8A020;
-      --ph-glass: rgba(255, 255, 255, 0.05);
-      --ph-red: rgb(255, 92, 94);
+      --phone-background: #131310;
+      --phone-background-raised: #1A1A16;
+      --phone-background-chat: #272723;
+      --phone-border: #272720;
+      --phone-border-mid: #413F35;
+      --phone-text-primary: #C8C2AE;
+      --phone-text-mid: #A69E8D;
+      --phone-text-dim: #8C8677;
+      --phone-accent: #E8A020;
+      --phone-glass: rgba(255, 255, 255, 0.05);
+      --phone-red: rgb(255, 92, 94);
     }
 
     :root.light {
@@ -81,17 +81,17 @@
       --amber-subtle: rgb(227, 220, 207);
       --nav-bg-scrolled: rgba(245,242,236,0.92);
       --nav-bg-top: rgba(245,242,236,0.95);
-      --ph-background: #F4F1EA;
-      --ph-background-raised: #ECEAE2;
-      --ph-background-chat: #DFDDD5;
-      --ph-border: #D8D4C8;
-      --ph-border-mid: #B5B0A2;
-      --ph-text-primary: #2A2820;
-      --ph-text-mid: #665E51;
-      --ph-text-dim: #8B8476;
-      --ph-accent: #C07808;
-      --ph-glass: rgba(255, 255, 255, 0.4);
-      --ph-red: rgb(229, 7, 0);
+      --phone-background: #F4F1EA;
+      --phone-background-raised: #ECEAE2;
+      --phone-background-chat: #DFDDD5;
+      --phone-border: #D8D4C8;
+      --phone-border-mid: #B5B0A2;
+      --phone-text-primary: #2A2820;
+      --phone-text-mid: #665E51;
+      --phone-text-dim: #8B8476;
+      --phone-accent: #C07808;
+      --phone-glass: rgba(255, 255, 255, 0.4);
+      --phone-red: rgb(229, 7, 0);
     }
 
     html { scroll-behavior: smooth; }
@@ -494,27 +494,25 @@
     .phone-view-wrapper::-webkit-scrollbar { display: none; }
     .phone-view {
       display: flex;
-      min-height: 460px;
+      min-height: 475px;
       min-width: 250px;
       flex-direction: column;
       align-items: stretch;
       justify-content: space-between;
       flex-grow: 1;
     }
-    
-    /* Light-UI phone — matches real app appearance */
     .phone-frame-light {
-      background: var(--ph-background);
+      background: var(--phone-background);
       border: 5px solid rgba(0,0,0,0.7);
-      box-shadow: 0 16px 72px var(--ph-border-mid), 0 0 0 1px rgba(0,0,0,0.06) inset;
+      box-shadow: 0 16px 72px var(--phone-border-mid), 0 0 0 1px rgba(0,0,0,0.06) inset;
     }
     :root.light .phone-frame-light {
-      box-shadow: 0 16px 48px var(--ph-border-mid), 0 0 0 1px rgba(0,0,0,0.07) inset;
+      box-shadow: 0 16px 48px var(--phone-border-mid), 0 0 0 1px rgba(0,0,0,0.07) inset;
     }
     .phone-notch {
       width: 48px;
       height: 9px;
-      background: var(--ph-border-mid);
+      background: var(--phone-border-mid);
       border-radius: 6px;
       margin: 0 auto;
       flex-grow: 0;
@@ -565,16 +563,16 @@
     }
 
     /* ── MOVEMENT DETAIL MOCKUP ──────────────────────────── */
-    .pmv-counter {
+    .phone-counter {
       font-family: var(--mono);
       font-size: 9px;
       font-weight: 400;
-      color: var(--ph-text-dim);
+      color: var(--phone-text-dim);
       letter-spacing: 0.14em;
       text-align: center;
       margin-bottom: 10px;
     }
-    .pmv-name {
+    .phone-name {
       font-family: var(--serif);
       font-size: 26px;
       line-height: 1.1;
@@ -583,18 +581,18 @@
       padding: 0 20px;
       margin-bottom: 10px;
     }
-    .pmv-cue {
+    .phone-cue {
       font-size: 13px;
       font-weight: 400;
-      color: var(--ph-text-dim);
+      color: var(--phone-text-dim);
       text-align: center;
       padding: 0 20px;
       line-height: 1.55;
       margin-bottom: 14px;
     }
-    .pmv-image-card {
-      margin: 0 16px 10px;
-      background: var(--ph-background);
+    .phone-image-card {
+      margin: 0 16px 28px;
+      background: var(--phone-background);
       border-radius: 5px;
       overflow: hidden;
       height: 90px;
@@ -602,75 +600,61 @@
       align-items: center;
       justify-content: center;
     }
-    .pmv-svg { width: 100%; height: 100%; }
-    .pmv-exercise-img {
+    .phone-exercise-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .pmv-img-placeholder {
+    .phone-img-placeholder {
       width: 100%;
       height: 100%;
       display: none;
       align-items: center;
       justify-content: center;
     }
-    .pmv-img-placeholder-label {
+    .phone-img-placeholder-label {
       font-family: var(--mono);
       font-size: 9px;
       font-weight: 400;
-      color: var(--ph-text-dim);
+      color: var(--phone-text-dim);
       letter-spacing: 0.12em;
       text-transform: uppercase;
     }
-    .pmv-dots {
-      display: flex;
-      justify-content: center;
-      gap: 6px;
-      margin-bottom: 14px;
-    }
-    .pmv-dot {
-      width: 24px;
-      height: 5px;
-      border-radius: 3px;
-      background: var(--ph-border);
-    }
-    .pmv-dot-active { background: var(--ph-text-mid); }
-    .pmv-log-card {
+    .phone-log-card {
       margin: 0 16px 16px;
-      background: var(--ph-background-raised);
+      background: var(--phone-background-raised);
       border-radius: 5px;
       padding: 8px 16px 9px;
       text-align: center;
-      border: 1px solid var(--ph-border-mid);
+      border: 1px solid var(--phone-border-mid);
     }
-    .pmv-log-label {
+    .phone-log-label {
       font-family: var(--mono);
       font-size: 9px;
       font-weight: 400;
-      color: var(--ph-text-dim);
+      color: var(--phone-text-dim);
       letter-spacing: 0.14em;
       margin-bottom: 2px;
     }
-    .pmv-log-reps {
+    .phone-log-reps {
       font-family: var(--serif);
       font-size: 28px;
       font-weight: 400;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
       line-height: 1;
       margin-bottom: 2px;
     }
-    .pmv-log-weight {
+    .phone-log-weight {
       font-family: var(--mono);
       font-size: 11px;
       font-weight: 400;
-      color: var(--ph-text-dim);
+      color: var(--phone-text-dim);
       letter-spacing: 0.1em;
     }
 
     /* ── ADJUSTMENT CHAT MOCKUP ──────────────────────────── */
-    .ph-nav {
+    .phone-nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -678,11 +662,11 @@
       margin-bottom: 20px;
       transform: translateY(-24px);
     }
-    .ph-back {
+    .phone-back {
       width: 32px;
       height: 32px;
-      background: var(--ph-glass);
-      border: 1px solid var(--ph-border);
+      background: var(--phone-glass);
+      border: 1px solid var(--phone-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -690,26 +674,26 @@
       padding-bottom: 6px;
       font-size: 26px;
       font-weight: 300;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
       line-height: 1;
     }
-    .ph-keyboard {
+    .phone-keyboard {
       width: 32px;
       height: 32px;
-      background: var(--ph-glass);
-      border: 1px solid var(--ph-border);
+      background: var(--phone-glass);
+      border: 1px solid var(--phone-border);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
       line-height: 1;
     }
-    .ph-toolbar-text {
+    .phone-toolbar-text {
       height: 32px;
       width: auto;
-      background: var(--ph-glass);
-      border: 1px solid var(--ph-border);
+      background: var(--phone-glass);
+      border: 1px solid var(--phone-border);
       border-radius: 999rem;
       display: flex;
       align-items: center;
@@ -717,29 +701,29 @@
       padding: 0px 0.9em;
       font-size: 11px;
       font-weight: 400;
-      color: var(--ph-text-mid);
+      color: var(--phone-text-mid);
       line-height: 1;
     }
-    .ph-keyboard svg {
+    .phone-keyboard svg {
       width: 17px;
     }
-    .ph-title {
+    .phone-title {
       font-family: var(--sans);
       font-size: 12px;
       font-weight: 500;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 3px;
     }
-    .ph-title-icon { 
+    .phone-title-icon { 
       font-size: 11px; 
       width: 11.5px;
       height: 11.5px;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
     }
-    .ph-rpe-title {
+    .phone-rpe-title {
       font-family: var(--serif);
       font-size: 26px;
       line-height: 1.1;
@@ -747,7 +731,7 @@
       text-align: center;
       padding: 16px 20px 42px;
     }
-    .ph-rpe-label {
+    .phone-rpe-label {
       font-family: var(--serif);
       font-size: 18px;
       line-height: 1.1;
@@ -755,7 +739,7 @@
       text-align: center;
       padding: 16px 20px 4px;
     }
-    .ph-rpe-caption {
+    .phone-rpe-caption {
       font-family: var(--sans);
       font-size: 10px;
       color: var(--text-muted);
@@ -767,14 +751,14 @@
       gap: 3px;
       height: 16px;
     }
-    .ph-rpe-caption svg.ph-rpe-icon {
+    .phone-rpe-caption svg.phone-rpe-icon {
       height: 10px;
     } 
-    .ph-rep-caption-text {
+    .phone-rep-caption-text {
       padding-top: 2px;
     }
 
-    .ph-rpe-grid {
+    .phone-rpe-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(2, 1fr);
@@ -782,8 +766,8 @@
       align-items: stretch;
       margin: 16px 16px 20px;
     }
-    .ph-rpe-grid > * {
-      background-color: var(--ph-background-raised);
+    .phone-rpe-grid > * {
+      background-color: var(--phone-background-raised);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -792,20 +776,20 @@
       font-size: 18px;
     }
 
-    .ph-rpe-grid .rpe-low {
-      border: 1px solid var(--ph-border-mid);
-      color: var(--ph-text-dim);
+    .phone-rpe-grid .rpe-low {
+      border: 1px solid var(--phone-border-mid);
+      color: var(--phone-text-dim);
     }
-    .ph-rpe-grid .rpe-mid {
-      border: 1px solid var(--ph-accent);
-      color: var(--ph-accent);
+    .phone-rpe-grid .rpe-mid {
+      border: 1px solid var(--phone-accent);
+      color: var(--phone-accent);
     }
-    .ph-rpe-grid .rpe-high {
-      border: 1px solid var(--ph-red);
-      color: var(--ph-red);
+    .phone-rpe-grid .rpe-high {
+      border: 1px solid var(--phone-red);
+      color: var(--phone-red);
     }
     
-    .ph-messages {
+    .phone-messages {
       padding: 0 16px;
       display: flex;
       flex-direction: column;
@@ -813,73 +797,73 @@
       flex-grow: 1;
       min-height: 220px;
     }
-    .ph-yield-msg {
+    .phone-yield-msg {
       display: flex;
       gap: 10px;
       align-items: flex-start;
     }
-    .ph-yield-border {
+    .phone-yield-border {
       width: 3px;
       border-radius: 2px;
-      background: var(--ph-accent);
+      background: var(--phone-accent);
       opacity: 0.5;
       flex-shrink: 0;
       align-self: stretch;
       min-height: 36px;
     }
-    .ph-yield-text {
+    .phone-yield-text {
       font-size: 12px;
       font-weight: 400;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
       line-height: 1.55;
     }
-    .ph-user-msg { display: flex; justify-content: flex-end; }
-    .ph-user-bubble {
-      background: var(--ph-background-chat);
+    .phone-user-msg { display: flex; justify-content: flex-end; }
+    .phone-user-bubble {
+      background: var(--phone-background-chat);
       border-radius: 14px 14px 3px 14px;
       padding: 10px 13px;
       font-size: 12px;
       font-weight: 400;
-      color: var(--ph-text-primary);
+      color: var(--phone-text-primary);
       line-height: 1.5;
       max-width: 85%;
     }
-    .ph-analyzing-wrap {
+    .phone-analyzing-wrap {
       position: relative;
       height: 24px; /* match your element's height */
     }
-    .ph-analyzing-wrap .ph-analyzing {
+    .phone-analyzing-wrap .phone-analyzing {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
     }
-    .ph-icon,
-    .ph-icon svg {
+    .phone-icon,
+    .phone-icon svg {
       font-size: 12px;
-      color: var(--ph-text-mid);
+      color: var(--phone-text-mid);
       display: inline-block;
     }
-    .ph-icon svg {
+    .phone-icon svg {
       width: 12px;
       height: 9px;
     }
-    .ph-analyzing-label {
+    .phone-analyzing-label {
       font-family: var(--mono);
       font-size: 10px;
       font-weight: 400;
-      color: var(--ph-text-mid);
+      color: var(--phone-text-mid);
       letter-spacing: 0.14em;
     }
-    .ph-input-row-wrapper {
+    .phone-input-row-wrapper {
       display: flex;
       align-items: center;
       gap: 6px;
       margin: 16px 16px 0;
     }
-    .ph-input-row {
-      background: var(--ph-background-raised);
-      border: 1px solid var(--ph-border);
+    .phone-input-row {
+      background: var(--phone-background-raised);
+      border: 1px solid var(--phone-border);
       border-radius: 6px;
       padding: 5px 14px 7px;
       display: flex;
@@ -887,20 +871,20 @@
       justify-content: flex-start;
       flex-grow: 1;
     }
-    .ph-input-fake { 
+    .phone-input-fake { 
       font-size: 12px; 
-      color: var(--ph-text-dim); 
+      color: var(--phone-text-dim); 
     }
-    .ph-send {
+    .phone-send {
       width: 30px;
       height: 30px;
-      background: var(--ph-background-chat);
+      background: var(--phone-background-chat);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 16px;
-      color: var(--ph-text-dim);
+      color: var(--phone-text-dim);
       opacity: 0.8;
       font-weight: bold;
     }
@@ -1192,9 +1176,10 @@
       font-size: 16px;
       font-weight: 400;
       color: var(--text-dim);
-      max-width: 460px;
+      max-width: 475px;
       margin: 0 auto 48px;
       line-height: 1.7;
+      text-wrap: pretty;
     }
     /* ── BETA EXPAND ─────────────────────────────────────── */
     .beta-trigger {
@@ -1313,16 +1298,30 @@
     .footer-logo {
       font-family: var(--mono);
       font-size: 15px;
-      color: var(--text-muted);
+      color: var(--text-dim);
       text-decoration: none;
       text-transform: uppercase;
     }
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--amber); }
+    .footer-links a.active { color: var(--amber); }
     .footer-copy {
       font-family: var(--mono);
       font-size: 11px;
-      font-weight: 400;
       color: var(--text-muted);
-      letter-spacing: 0.08em;
+      letter-spacing: 0.04em;
     }
 
     /* ── ANIMATIONS ──────────────────────────────────────── */
@@ -1529,8 +1528,8 @@
         <div class="phone-view-wrapper" id="sessionScroller">
           <div class="phone-view">
             <div class="phone-toolbar">
-              <div class="ph-back">&#x2039;</div>
-              <div class="ph-keyboard">
+              <div class="phone-back">&#x2039;</div>
+              <div class="phone-keyboard">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24.9414 15.4395">
                   <g>
                     <rect height="15.4395" opacity="0" width="24.9414" x="0" y="0"/>
@@ -1540,35 +1539,35 @@
               </div>
             </div>
             <div class="phone-content">
-              <div class="pmv-counter">MOVEMENT 4 OF 6</div>
-              <div class="pmv-name">Lat Pulldown</div>
-              <div class="pmv-cue">Shoulderblades down first, then pull with arms. Keep chest up. Then pause at bottom.</div>
+              <div class="phone-counter">MOVEMENT 4 OF 6</div>
+              <div class="phone-name">Lat Pulldown</div>
+              <div class="phone-cue">Shoulderblades down first, then pull with arms. Keep chest up. Then pause at bottom.</div>
 
-              <div class="pmv-image-card">
+              <div class="phone-image-card">
                 <!-- Replace src with your exercise image URL or base64 data URI -->
                 <img
                   src="./lat-pull-down.png"
                   alt="Romanian Deadlift"
-                  class="pmv-exercise-img"
+                  class="phone-exercise-img"
                   id="pmvExerciseImg"
                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
                 />
-                <div class="pmv-img-placeholder">
-                  <span class="pmv-img-placeholder-label">Exercise image</span>
+                <div class="phone-img-placeholder">
+                  <span class="phone-img-placeholder-label">Exercise image</span>
                 </div>
               </div>
             </div>
-            <div class="pmv-log-card" id="sessionLogCard">
-              <div class="pmv-log-label">SET 1 OF 3</div>
-              <div class="pmv-log-reps">8 REPS</div>
-              <div class="pmv-log-weight">120 LBS</div>
+            <div class="phone-log-card" id="sessionLogCard">
+              <div class="phone-log-label">SET 1 OF 3</div>
+              <div class="phone-log-reps">8 REPS</div>
+              <div class="phone-log-weight">120 LBS</div>
             </div>
           </div>
           <div class="phone-view">
             <div class="phone-content">
-              <div class="ph-rpe-title">Set 2 Complete</div>
-              <div class="ph-rpe-label">Rate Your Perceived Exertion</div>
-              <div class="ph-rpe-grid">
+              <div class="phone-rpe-title">Set 2 Complete</div>
+              <div class="phone-rpe-label">Rate Your Perceived Exertion</div>
+              <div class="phone-rpe-grid">
                 <div class="rpe-low">1</div>
                 <div class="rpe-low">2</div>
                 <div class="rpe-low">3</div>
@@ -1580,14 +1579,14 @@
                 <div class="rpe-high">9</div>
                 <div class="rpe-high">10</div>
               </div>
-              <div class="ph-rpe-caption">
-                  <svg class="ph-rpe-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.002 9.46289">
+              <div class="phone-rpe-caption">
+                  <svg class="phone-rpe-icon" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 10.002 9.46289">
                     <g>
                       <rect height="9.46289" opacity="0" width="10.002" x="0" y="0"/>
                       <path d="M9.46289 4.72852C9.46289 7.33594 7.3418 9.45703 4.72852 9.45703C2.12109 9.45703 0 7.33594 0 4.72852C0 2.12109 2.12109 0 4.72852 0C7.3418 0 9.46289 2.12109 9.46289 4.72852ZM3.99609 3.90234C3.78516 3.90234 3.60938 4.07227 3.60938 4.27734C3.60938 4.50586 3.78516 4.66406 3.99609 4.66406L4.44141 4.66406L4.44141 6.66797L3.9082 6.66797C3.68555 6.66797 3.51562 6.83789 3.51562 7.04297C3.51562 7.27148 3.68555 7.42969 3.9082 7.42969L5.8418 7.42969C6.05859 7.42969 6.23438 7.27148 6.23438 7.04297C6.23438 6.83789 6.05859 6.66797 5.8418 6.66797L5.30859 6.66797L5.30859 4.39453C5.30859 4.10156 5.16211 3.90234 4.88672 3.90234ZM3.99609 2.47266C3.99609 2.85352 4.30078 3.16406 4.68164 3.16406C5.0625 3.16406 5.35547 2.85352 5.35547 2.47266C5.35547 2.08594 5.0625 1.78711 4.68164 1.78711C4.30078 1.78711 3.99609 2.08594 3.99609 2.47266Z" fill="currentColor" fill-opacity="0.85"/>
                     </g>
                   </svg>
-                <div class="ph-rep-caption-text">What is Perceived Exertion?</div>
+                <div class="phone-rep-caption-text">What is Perceived Exertion?</div>
             </div>
           </div>
         </div>
@@ -1649,7 +1648,7 @@
   <div class="chat-section">
     <div>
       <p class="section-tag reveal">In the gym and out</p>
-      <h2 class="section-header reveal">You can message Yield <em>whenever you need to.</em></h2>
+      <h2 class="section-header reveal">Adapts to life <em>as it happens.</em></h2>
       <p class="section-intro reveal">
         While at the gym, you can ask Yield something, and it'll know exactly which movement you're on, what you've logged, and how your effort's been tracking.
       </p>
@@ -1662,9 +1661,9 @@
         <div class="phone-notch"></div>
         <div class="phone-view">
           <div class="phone-toolbar">
-            <div class="ph-back">&#x2039;</div>
-            <div class="ph-title">
-              <div class="ph-title-icon">
+            <div class="phone-back">&#x2039;</div>
+            <div class="phone-title">
+              <div class="phone-title-icon">
                 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 13.2793 12.7778">
                   <g>
                     <rect height="12.7778" opacity="0" width="13.2793" x="0" y="0"/>
@@ -1674,45 +1673,45 @@
               </div>
               <div>Yield</div>
             </div>
-            <div class="ph-back" style="opacity:0">&#x2039;</div>
+            <div class="phone-back" style="opacity:0">&#x2039;</div>
           </div>
-          <div class="ph-messages" id="pchMessages">
-            <div class="ph-yield-msg" id="pchY1">
-              <div class="ph-yield-border"></div>
-              <div class="ph-yield-text">You have a 6-Week Enhancement protocol targeting April 16th. You're 3 sessions in with 25 remaining. What would you like to change?</div>
+          <div class="phone-messages" id="pchMessages">
+            <div class="phone-yield-msg" id="pchY1">
+              <div class="phone-yield-border"></div>
+              <div class="phone-yield-text">You have a 6-Week Enhancement protocol targeting April 16th. You're 3 sessions in with 25 remaining. Anything you'd like to change?</div>
             </div>
 
-            <div class="ph-user-msg" id="pchU1">
-              <div class="ph-user-bubble">I'm recovering from being sick. Can you reduce my treadmill time tomorrow?</div>
+            <div class="phone-user-msg" id="pchU1">
+              <div class="phone-user-bubble">I'm still recovering from being sick. Should my session be lighter today?</div>
             </div>
 
-            <div class="ph-analyzing-wrap">
-              <div class="ph-analyzing" id="pchA1">
-                <span class="ph-icon ph-spin">
+            <div class="phone-analyzing-wrap">
+              <div class="phone-analyzing" id="pchA1">
+                <span class="phone-icon phone-spin">
                   <svg viewBox="0 0 12 12" fill="currentColor" xmlns="http://www.w3.org/2000/svg">                                           
                       <circle cx="6" cy="6" r="5" fill="none" stroke="#888" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="20 12" opacity="0.85">               
                         <animateTransform attributeName="transform" type="rotate" from="0 6 6" to="360 6 6" dur="0.75s" repeatCount="indefinite"/>                           
                       </circle>                                          
                   </svg>
                 </span>
-                <span class="ph-analyzing-label">ANALYZING</span>
+                <span class="phone-analyzing-label">ANALYZING</span>
               </div>
-              <div class="ph-analyzing" id="pchA2">
-                <span class="ph-icon">✓</span>
-                <span class="ph-analyzing-label">UPDATED</span>
+              <div class="phone-analyzing" id="pchA2">
+                <span class="phone-icon">✓</span>
+                <span class="phone-analyzing-label">UPDATED</span>
               </div>
             </div>
 
-            <div class="ph-yield-msg" id="pchY2" style="opacity:0;">
-              <div class="ph-yield-border"></div>
-              <div class="ph-yield-text">I've reduced your treadmill duration to 70% for tomorrow. Let me know if you need any other adjustments.</div>
+            <div class="phone-yield-msg" id="pchY2" style="opacity:0;">
+              <div class="phone-yield-border"></div>
+              <div class="phone-yield-text">Training through illness usually does more harm than good. I've reduced your treadmill and compound lifts by 30% and left the smaller exercises unchanged. Let me know if you want to skip anything entirely.</div>
             </div>
           </div>
-          <div class="ph-input-row-wrapper">
-            <div class="ph-input-row">
-              <div class="ph-input-fake">Your message</div>
+          <div class="phone-input-row-wrapper">
+            <div class="phone-input-row">
+              <div class="phone-input-fake">Your message</div>
             </div>
-            <div class="ph-send">↑</div>
+            <div class="phone-send">↑</div>
           </div>
         </div>
       </div>
@@ -1796,7 +1795,11 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">Yield</a>
+  <a href="./index.html" class="footer-logo">YIELD</a>
+  <div class="footer-links">
+    <a href="./terms.html" class="active">Terms</a>
+    <a href="./privacy.html">Privacy</a>
+  </div>
   <span class="footer-copy">© 2026 · A precision training instrument</span>
 </footer>
 
