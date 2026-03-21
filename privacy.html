@@ -448,6 +448,9 @@
       <p>When you use Yield, you create and store workout-related data locally on your device, including training protocols and session plans, exercise names, sets, reps, weights, and RPE values, session completion status and scheduling, and training objectives and progress indicators.</p>
       <p>This data is stored entirely on your device using Apple's SwiftData framework. We do not transmit, collect, or have access to your workout data on any server.</p>
 
+      <h3>Apple Watch heart rate (optional)</h3>
+      <p>If you connect an Apple Watch, Yield reads your real-time heart rate via HealthKit to time rest periods between sets. This data is used only in the moment and is never stored, logged, or transmitted off your device. No other HealthKit data is accessed.</p>
+
       <h3>AI Conversation Data</h3>
       <p>When you use Yield's AI-powered features — protocol creation and in-workout guidance — the App sends conversation messages to Anthropic's Claude API. This includes the text messages you type, contextual workout information relevant to the active conversation (such as your current exercise, sets, and RPE), and the AI's responses.</p>
       <p>These messages are sent to Anthropic's servers for processing. They are not stored by us on any server we operate. Anthropic's handling of this data is governed by their Privacy Policy and API terms. As of the effective date of this policy, Anthropic does not use API inputs or outputs to train their models — however, you should review Anthropic's current policy directly, as their terms may change.</p>
@@ -486,6 +489,11 @@
             <td>Training protocols and sessions</td>
             <td>Organize and schedule your workouts</td>
             <td>On your device only</td>
+          </tr>
+          <tr>
+            <td>Apple Watch heart rate (real-time, via HealthKit)</td>
+            <td>Determine rest period timing between sets</td>
+            <td>On your device only &mdash; never stored or transmitted</td>
           </tr>
           <tr>
             <td>AI conversation messages</td>
@@ -550,7 +558,7 @@
       <h2>Your Rights and Choices</h2>
 
       <h3>Control Over Your Data</h3>
-      <p>Since your data is stored locally on your device, you have full control over it at all times. You can delete workout data through the App's interface, delete all data by uninstalling the App, or avoid AI features entirely if you do not want any data sent to Anthropic. The App's manual workout logging features function without AI.</p>
+      <p>Since your data is stored locally on your device, you have full control over it at all times. You can delete workout data through the App's interface or delete all data by uninstalling the App. Note that creating a training protocol requires the AI conversation flow, which sends messages to Anthropic. Once a protocol is established, logging sessions and tracking progress do not require AI.</p>
 
       <h3>Minnesota Consumer Data Privacy Act (MCDPA)</h3>
       <p>If you are a Minnesota resident, the Minnesota Consumer Data Privacy Act provides you with rights regarding your personal data. Because Yield stores data locally on your device and we do not maintain user accounts or store personal data on our servers, these rights are effectively exercised through your direct control of the App and your device. If you have questions related to your MCDPA rights, contact us at the address below.</p>
